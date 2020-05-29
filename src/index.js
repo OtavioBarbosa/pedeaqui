@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./layouts/Login";
 import Sistema from "./layouts/Sistema";
 
+import './assets/styles/style.scss'
+
 ReactDOM.render(
   <BrowserRouter>
     <Switch>

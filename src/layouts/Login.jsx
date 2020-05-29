@@ -1,8 +1,7 @@
 
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-
-import routes from "../routes.js";
+import React from "react"
+import { Route, Switch } from "react-router-dom"
+import routes from "../routes.js"
 
 class Login extends React.Component {
 
@@ -37,7 +36,7 @@ class Login extends React.Component {
   render() {
     return (
       <>
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+        <div className='fundo-login'>
           <Switch>{this.getRoutes(routes)}</Switch>
         </div>
       </>
