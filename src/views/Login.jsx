@@ -13,7 +13,7 @@ class Login extends React.Component {
       icone: 'fa-eye',
       header: '',
       body: '',
-      footer: ''
+      footer: <button onClick={this.fecharModal} className='btn-fechar-modal'>Fechar</button>
     }
   }
 
@@ -68,11 +68,13 @@ class Login extends React.Component {
   }
 
   abrirModal = () => {
-    document.getElementsByClassName('modal')[0].style.display = 'flex'
+    document.getElementsByClassName('modal')[0].style.display = 'block'
+    document.getElementsByTagName('html')[0].style.overflow = 'hidden'
   }
 
   fecharModal = () => {
     document.getElementsByClassName('modal')[0].style.display = 'none'
+    document.getElementsByTagName('html')[0].style.overflow = 'auto'
   }
 
   render() {
@@ -118,7 +120,7 @@ class Login extends React.Component {
             <Link to='/cadastrarse' className='link-login'>Está com fome? Cadastre-se agora</Link>
           </div>
         </div>
-        <div className='modal' onClick={this.fecharModal}>
+        <div className='modal'>
           <div className='modal-conteudo'>
             <i className='fas fa-times fechar-modal' onClick={this.fecharModal}/>
             <div className='modal-header'>

@@ -13,7 +13,10 @@ class Cadastrar_se extends React.Component {
       senha: '',
       confirmar_senha: '',
       icone: 'fa-eye',
-      icone_confirmar: 'fa-eye'
+      icone_confirmar: 'fa-eye',
+      header: '',
+      body: '',
+      footer: <button onClick={this.fecharModal} className='btn-fechar-modal'>Fechar</button>
     }
   }
 
@@ -44,19 +47,32 @@ class Cadastrar_se extends React.Component {
 
     if(conectar){
       if(this.state.email.indexOf('@') === -1 || this.state.email.substring(this.state.email.indexOf('@'), this.state.email.length).indexOf('.') === -1){
-        alert('Email inválido')
+        this.setState({
+          header: 'Aviso',
+          body: 'Formato do email inválido'
+        })
+        this.abrirModal()
         this.invalido('email')
       }
       else if(this.state.senha !== this.state.confirmar_senha){
-        alert('Senha diferentes')
+        this.setState({
+          header: 'Aviso',
+          body: 'Senhas não combinam, verifique se digitou corretamente'
+        })
+        this.abrirModal()
         this.invalido('confirmar_senha')
       }
       else {
-        alert('Conectar-se')
+        alert('Cadastrado')
+        this.limparFormulario()
       }
     }
     else{
-      alert('Preencha os campos obrigatórios')
+      this.setState({
+        header: 'Aviso',
+        body: 'É necessário preencher todos os campos'
+      })
+      this.abrirModal()
     }
   }
 
@@ -70,6 +86,23 @@ class Cadastrar_se extends React.Component {
     if(document.getElementById(id).classList.contains('campo-obrigatorio')){
       document.getElementById(id).classList.remove('campo-obrigatorio')
     } 
+  }
+
+  abrirModal = () => {
+    document.getElementsByClassName('modal')[0].style.display = 'block'
+  }
+
+  fecharModal = () => {
+    document.getElementsByClassName('modal')[0].style.display = 'none'
+  }
+
+  limparFormulario = () => {
+    this.setState({
+      nome: '',
+      email: '',
+      senha: '',
+      confirmar_senha: ''
+    })
   }
 
   render() {
@@ -137,6 +170,20 @@ class Cadastrar_se extends React.Component {
                 </div>
                 <Link to='/login' className='link-login'>Conecte-se ao PedeAqui</Link>
             </div>
+        </div>
+        <div className='modal'>
+          <div className='modal-conteudo'>
+            <i className='fas fa-times fechar-modal' onClick={this.fecharModal}/>
+            <div className='modal-header'>
+              {this.state.header}
+            </div>
+            <div className='modal-body'>
+              {this.state.body}
+            </div>
+            <div className='modal-footer'>
+              {this.state.footer}
+            </div>
+          </div>
         </div>
       </>
     );
