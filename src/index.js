@@ -6,7 +6,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./layouts/Login";
 import Sistema from "./layouts/Sistema";
 
-import './assets/styles/style.scss'
+import './assets/styles/style.css';
+import './assets/font/fontawesome-free-5.13.0-web/css/all.min.css';
 
 ReactDOM.render(
   <BrowserRouter>
