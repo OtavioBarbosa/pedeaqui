@@ -43,7 +43,7 @@ class Login extends React.Component {
         this.invalido('email')
       }
       else{
-        alert('Conectar-se')
+        this.props.history.push('/pedeaqui/opcao')
       }
     }
     else{
@@ -89,7 +89,7 @@ class Login extends React.Component {
           <div>
             <div className='grupo-input'>
               <div className='agrupar-campo-icone' id='email'>
-                <input type='text' className='campo-input' placeholder='Email' value={this.state.email} onChange={(evento) => {
+                <input type='email' className='campo-input' placeholder='Email' value={this.state.email} onChange={(evento) => {
                   this.setState({email: evento.target.value})
                   this.valido('email')
                 }}/>
@@ -111,7 +111,7 @@ class Login extends React.Component {
                     this.setState({icone: 'fa-eye'})
                     document.getElementsByName('senha')[0].type = 'password';
                   } 
-                }}/>
+                }} />
               </div>
             </div>
             <div className='grupo-input'>

@@ -1,6 +1,7 @@
 
 import Login from "./views/Login.jsx";
 import Cadastrar_se from "./views/Cadastrar_se.jsx";
+import Opcao from "./views/Opcao.jsx";
 
 var routes = [
   {
@@ -23,6 +24,13 @@ var routes = [
     icon: "",
     component: Cadastrar_se,
     layout: "/"
+  },
+  {
+    path: "/opcao",
+    name: "Escolha o que deseja fazer",
+    icon: "",
+    component: Opcao,
+    layout: "/pedeaqui"
   },
 ];
 

@@ -122,7 +122,7 @@ class Cadastrar_se extends React.Component {
                 </div>
                 <div className='grupo-input'>
                     <div className='agrupar-campo-icone' id='email'>
-                        <input type='text' className='campo-input' placeholder='Email' value={this.state.email} onChange={(evento) => {
+                        <input type='email' className='campo-input' placeholder='Email' value={this.state.email} onChange={(evento) => {
                             this.setState({email: evento.target.value})
                             this.valido('email')
                         }}/>

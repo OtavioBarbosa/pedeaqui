@@ -12,8 +12,8 @@ import './assets/font/fontawesome-free-5.13.0-web/css/all.min.css';
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/" component={Login} />
       <Route path="/pedeaqui" component={Sistema} />
+      <Route path="/" component={Login} />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

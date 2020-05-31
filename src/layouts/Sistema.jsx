@@ -19,7 +19,7 @@ class Sistema extends React.Component {
 
   getRoutes = routes => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/") {
+      if (prop.layout === "/pedeaqui") {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -36,7 +36,7 @@ class Sistema extends React.Component {
   render() {
     return (
       <>
-        <div>
+        <div className='fundo-sistema'>
           <Switch>{this.getRoutes(routes)}</Switch>
         </div>
       </>
