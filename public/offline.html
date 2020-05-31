@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+    
+        <link rel="manifest" href="/manifest.json" />
+    
+        <title>PedeAqui</title>
+
+    </head>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins');
+
+        *{
+            font-family: 'Poppins';
+        }
+
+        button, div {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body{
+            background: #F4F4F4;
+            margin: 0;
+            height: 100vh;
+        }
+
+        .imagem-offline {
+            width: 100%;
+            height: 100%;
+            background: #000000;
+        }
+
+        .titulo-offline{
+            font-size: 1.7em;
+            font-weight: bolder;
+            color: #FFFFFF;
+        }
+
+        .overlay-offline {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items:center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .btn-tentar-novamente {
+            cursor: pointer;
+            width: 250px;
+            height: 60px;
+            padding: 1%;
+            margin-top: 3%;
+            background: #000000;
+            color: #FFFFFF;
+            font-weight: bolder;
+            border: 2px solid #FFFFFF;
+            box-sizing: border-box;
+            border-radius: 8px;
+            transition: 0.2s;
+            outline: none;
+        }
+
+        .btn-tentar-novamente:hover{
+            background: #262626;
+        }
+    </style>
+    
+    <body>
+        <div class="imagem-offline">
+            <div class="overlay-offline">
+                <div class="titulo-offline">
+                    Sem conexão
+                </div>
+                <button class="btn-tentar-novamente" onclick="window.location.reload()">Tentar novamente</button>
+            </div>
+        </div>
+    </body>
+
+</html>

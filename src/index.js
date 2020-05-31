@@ -8,6 +8,8 @@ import Sistema from "./layouts/Sistema";
 
 import './assets/styles/style.css';
 import './assets/font/fontawesome-free-5.13.0-web/css/all.min.css';
+import { registerServiceWorker } from './serviceWorker'
+
 
 ReactDOM.render(
   <BrowserRouter>
@@ -18,3 +20,5 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById("root")
 );
+  
+registerServiceWorker();
