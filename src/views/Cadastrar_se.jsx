@@ -152,6 +152,10 @@ class Cadastrar_se extends React.Component {
                         <input type='password' className='campo-input' placeholder='Confirmar senha' name='senha_confirmar' value={this.state.confirmar_senha} onChange={(evento) => {
                             this.setState({confirmar_senha: evento.target.value})
                             this.valido('confirmar_senha')
+                        }} onKeyPress={(evento) => {
+                          if(evento.key === 'Enter'){
+                            this.cadastrar()
+                          }
                         }}/>
                         <i className={'icone-senha fas ' + this.state.icone_confirmar} onClick={() => {
                           if(this.state.icone_confirmar === 'fa-eye'){

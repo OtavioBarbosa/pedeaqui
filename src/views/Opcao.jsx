@@ -15,7 +15,7 @@ class Opcao extends React.Component {
   }
 
   cardapio = () => {
-      this.props.history.push('/login')
+      this.props.history.push('/pedeaqui/restaurantes')
   }
 
   identificarMesa = () => {

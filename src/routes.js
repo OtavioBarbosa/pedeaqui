@@ -2,6 +2,8 @@
 import Login from "./views/Login.jsx";
 import Cadastrar_se from "./views/Cadastrar_se.jsx";
 import Opcao from "./views/Opcao.jsx";
+import Cardapio from "./views/Cardapio.jsx";
+import Restaurantes from "./views/Restaurantes.jsx";
 
 var routes = [
   {
@@ -30,6 +32,20 @@ var routes = [
     name: "Escolha o que deseja fazer",
     icon: "",
     component: Opcao,
+    layout: "/pedeaqui"
+  },
+  {
+    path: "/restaurantes",
+    name: "Escolha o restaurante para exibir o cardápio",
+    icon: "",
+    component: Restaurantes,
+    layout: "/pedeaqui"
+  },
+  {
+    path: "/cardapio/:restaurante",
+    name: "Exibir o cardápio do restaurante escolhido",
+    icon: "",
+    component: Cardapio,
     layout: "/pedeaqui"
   },
 ];

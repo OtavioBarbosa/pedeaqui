@@ -101,6 +101,10 @@ class Login extends React.Component {
                 <input type='password' className='campo-input' placeholder='Senha' name='senha' value={this.state.senha} onChange={(evento) => {
                   this.setState({senha: evento.target.value})
                   this.valido('senha')
+                }} onKeyPress={(evento) => {
+                  if(evento.key === 'Enter'){
+                    this.conectar()
+                  }
                 }}/>
                 <i className={'icone-senha fas ' + this.state.icone} onClick={() => {
                   if(this.state.icone === 'fa-eye'){
