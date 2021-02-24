@@ -3,21 +3,9 @@ import React from "react"
 import { Route, Switch } from "react-router-dom"
 import routes from "../routes.js"
 
-class Sistema extends React.Component {
+const Sistema = () => {
 
-  constructor(props){
-    super(props)
-    this.state ={
-
-    }
-    
-  }
-
-  componentDidMount(){
-
-  }
-
-  getRoutes = routes => {
+  const getRoutes = (routes) => {
     return routes.map((prop, key) => {
       if (prop.layout === "/pedeaqui") {
         return (
@@ -27,21 +15,20 @@ class Sistema extends React.Component {
             key={key}
           />
         );
-      } else {
-        return null;
+      } 
+      else {
+        return null
       }
-    });
-  };
-
-  render() {
-    return (
-      <>
-        <div className='fundo-sistema'>
-          <Switch>{this.getRoutes(routes)}</Switch>
-        </div>
-      </>
-    );
+    })
   }
+
+  return (
+    <>
+      <div className='fundo-sistema'>
+        <Switch>{getRoutes(routes)}</Switch>
+      </div>
+    </>
+  )
 }
 
-export default Sistema;
+export default Sistema

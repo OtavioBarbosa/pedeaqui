@@ -3,21 +3,9 @@ import React from "react"
 import { Route, Switch } from "react-router-dom"
 import routes from "../routes.js"
 
-class Login extends React.Component {
+const Login = () => {
 
-  constructor(props){
-    super(props)
-    this.state ={
-
-    }
-    
-  }
-
-  componentDidMount(){
-
-  }
-
-  getRoutes = routes => {
+  const getRoutes = (routes) => {
     return routes.map((prop, key) => {
       if (prop.layout === "/") {
         return (
@@ -27,21 +15,20 @@ class Login extends React.Component {
             key={key}
           />
         );
-      } else {
-        return null;
+      } 
+      else {
+        return null
       }
-    });
-  };
-
-  render() {
-    return (
-      <>
-        <div className='fundo-login'>
-          <Switch>{this.getRoutes(routes)}</Switch>
-        </div>
-      </>
-    );
+    })
   }
+
+  return (
+    <>
+      <div className='fundo-login'>
+        <Switch>{getRoutes(routes)}</Switch>
+      </div>
+    </>
+  )
 }
 
-export default Login;
+export default Login

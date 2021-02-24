@@ -1,45 +1,32 @@
 
 import React from "react"
 
-class Opcao extends React.Component {
+const Opcao = (props) => {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    }
+  const cardapio = () => {
+    props.history.push('/pedeaqui/restaurantes')
   }
 
-  componentDidMount(){
-      
+  const identificarMesa = () => {
+    props.history.push('/cadastrarse')
   }
 
-  cardapio = () => {
-      this.props.history.push('/pedeaqui/restaurantes')
-  }
-
-  identificarMesa = () => {
-      this.props.history.push('/cadastrarse')
-  }
-
-  render() {
-    return (
-      <>
-        <div className='fundo-opcao'>
-            <div className='cardapio-image' onClick={this.cardapio}>
-                <div className='overlay-opcao'>
-                    <div className='titulo-opcao'>Cardápio</div>
-                </div>
-            </div> 
-            <div className='conectar-mesa-image' onClick={this.identificarMesa}>
-                <div className='overlay-opcao'>
-                    <div className='titulo-opcao'>Identificar mesa</div>
-                </div>
-            </div> 
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className='fundo-opcao'>
+          <div className='cardapio-image' onClick={cardapio}>
+              <div className='overlay-opcao'>
+                  <div className='titulo-opcao'>Cardápio</div>
+              </div>
+          </div> 
+          <div className='conectar-mesa-image' onClick={identificarMesa}>
+              <div className='overlay-opcao'>
+                  <div className='titulo-opcao'>Identificar mesa</div>
+              </div>
+          </div> 
+      </div>
+    </>
+  )
 }
 
 export default Opcao;
