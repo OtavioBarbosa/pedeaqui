@@ -2,6 +2,7 @@
 import React, {useState} from "react"
 
 import {Link} from "react-router-dom"
+import swal from 'sweetalert2';
 
 const Cadastrar_se = (props) => {
 
@@ -28,26 +29,36 @@ const Cadastrar_se = (props) => {
 
     if(conectar){
       if(email.indexOf('@') === -1 || email.substring(email.indexOf('@'), email.length).indexOf('.') === -1){
-        setHeader('Aviso')
-        setBody('Formato do email inválido')
-        abrirModal()
+        swal.fire({
+          title: 'Erro',
+          text: 'Formato do email inválido',
+          icon: 'error'
+        })
         invalido('email')
       }
       else if(senha !== confirmar_senha){
-        setHeader('Aviso')
-        setBody('Senhas não combinam, verifique se digitou corretamente')
-        abrirModal()
+        swal.fire({
+          title: 'Erro',
+          text: 'Senhas não combinam, verifique se digitou corretamente',
+          icon: 'error'
+        })
         invalido('confirmar_senha')
       }
       else {
-        alert('Cadastrado')
+        swal.fire({
+          title: 'Cadastrado',
+          text: 'Registro criado com sucesso',
+          icon: 'success'
+        })
         limparFormulario()
       }
     }
     else{
-      setHeader('Aviso')
-      setBody('É necessário preencher todos os campos')
-      abrirModal()
+      swal.fire({
+        title: 'Aviso',
+        text: 'É necessário preencher todos os campos',
+        icon: 'warning'
+      })
     }
   }
 
@@ -63,14 +74,6 @@ const Cadastrar_se = (props) => {
     } 
   }
 
-  const abrirModal = () => {
-    document.getElementsByClassName('modal')[0].style.display = 'block'
-  }
-
-  const fecharModal = () => {
-    document.getElementsByClassName('modal')[0].style.display = 'none'
-  }
-
   const limparFormulario = () => {
     setNome('')
     setEmail('')
@@ -82,15 +85,18 @@ const Cadastrar_se = (props) => {
     valido('confirmar_senha')
   }
 
+  const enter = (evento) => {
+    if(evento.key === 'Enter'){
+      cadastrar()
+    }
+  }
+
   const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [confirmar_senha, setConfirmarSenha] = useState('')
   const [icone, setIcone] = useState('fa-eye')
   const [icone_confirmar, setIconeConfirmar] = useState('fa-eye')
-  const [header, setHeader] = useState('')
-  const [body, setBody] = useState('')
-  const [footer] = useState(<button onClick={fecharModal} className='btn-fechar-modal'>Fechar</button>)
 
   return (
     <>
@@ -102,7 +108,7 @@ const Cadastrar_se = (props) => {
                       <input type='text' className='campo-input' placeholder='Nome' value={nome} onChange={(evento) => {
                           setNome(evento.target.value)
                           valido('nome')
-                      }}/>
+                      }} onKeyPress={(evento) => enter(evento)}/>
                       <i className='icone fas fa-user' />
                   </div>
               </div>
@@ -111,7 +117,7 @@ const Cadastrar_se = (props) => {
                       <input type='email' className='campo-input' placeholder='Email' value={email} onChange={(evento) => {
                           setEmail(evento.target.value)
                           valido('email')
-                      }}/>
+                      }} onKeyPress={(evento) => enter(evento)}/>
                       <i className='icone fas fa-envelope' />
                   </div>
               </div>
@@ -120,7 +126,7 @@ const Cadastrar_se = (props) => {
                       <input type='password' className='campo-input' placeholder='Senha' name='senha' value={senha} onChange={(evento) => {
                           setSenha(evento.target.value)
                           valido('senha')
-                      }}/>
+                      }} onKeyPress={(evento) => enter(evento)}/>
                       <i className={'icone-senha fas ' + icone} onClick={() => {
                         if(icone === 'fa-eye'){
                           setIcone('fa-eye-slash')
@@ -138,11 +144,7 @@ const Cadastrar_se = (props) => {
                       <input type='password' className='campo-input' placeholder='Confirmar senha' name='senha_confirmar' value={confirmar_senha} onChange={(evento) => {
                           setConfirmarSenha(evento.target.value)
                           valido('confirmar_senha')
-                      }} onKeyPress={(evento) => {
-                        if(evento.key === 'Enter'){
-                          cadastrar()
-                        }
-                      }}/>
+                      }} onKeyPress={(evento) => enter(evento)}/>
                       <i className={'icone-senha fas ' + icone_confirmar} onClick={() => {
                         if(icone_confirmar === 'fa-eye'){
                           setIconeConfirmar('fa-eye-slash')
@@ -160,20 +162,6 @@ const Cadastrar_se = (props) => {
               </div>
               <Link to='/login' className='link-login'>Conecte-se ao PedeAqui</Link>
           </div>
-      </div>
-      <div className='modal'>
-        <div className='modal-conteudo'>
-          <i className='fas fa-times fechar-modal' onClick={fecharModal}/>
-          <div className='modal-header'>
-            {header}
-          </div>
-          <div className='modal-body'>
-            {body}
-          </div>
-          <div className='modal-footer'>
-            {footer}
-          </div>
-        </div>
       </div>
     </>
   )

@@ -2,6 +2,7 @@
 import React, {useState} from "react"
 
 import {Link} from "react-router-dom"
+import swal from 'sweetalert2';
 
 const Login = (props) => {
 
@@ -19,9 +20,11 @@ const Login = (props) => {
 
     if(conectar){
       if(email.indexOf('@') === -1 || email.substring(email.indexOf('@'), email.length).indexOf('.') === -1){
-        setHeader('Aviso')
-        setBody('Formato do email inválido')
-        abrirModal()
+        swal.fire({
+          title: 'Erro',
+          text: 'Formato do email inválido',
+          icon: 'error'
+        })
         invalido('email')
       }
       else{
@@ -29,9 +32,11 @@ const Login = (props) => {
       }
     }
     else{
-      setHeader('Aviso')
-      setBody('É necessário preencher todos os campos')
-      abrirModal()
+      swal.fire({
+        title: 'Erro',
+        text: 'É necessário preencher todos os campos',
+        icon: 'error'
+      })
     }
   }
 
@@ -47,22 +52,15 @@ const Login = (props) => {
     } 
   }
 
-  const abrirModal = () => {
-    document.getElementsByClassName('modal')[0].style.display = 'block'
-    document.getElementsByTagName('html')[0].style.overflow = 'hidden'
-  }
-
-  const fecharModal = () => {
-    document.getElementsByClassName('modal')[0].style.display = 'none'
-    document.getElementsByTagName('html')[0].style.overflow = 'auto'
+  const enter = (evento) => {
+    if(evento.key === 'Enter'){
+      conectar()
+    }
   }
 
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [icone, setIcone] = useState('fa-eye')
-  const [header, setHeader] = useState('')
-  const [body, setBody] = useState('')
-  const [footer] = useState(<button onClick={fecharModal} className='btn-fechar-modal'>Fechar</button>)
   
   return (
     <>
@@ -78,7 +76,7 @@ const Login = (props) => {
               <input type='email' className='campo-input' placeholder='Email' value={email} onChange={(evento) => {
                 setEmail(evento.target.value)
                 valido('email')
-              }}/>
+              }} onKeyPress={(evento) => enter(evento)}/>
               <i className='icone fas fa-envelope' />
             </div>
           </div>
@@ -87,11 +85,7 @@ const Login = (props) => {
               <input type='password' className='campo-input' placeholder='Senha' name='senha' value={senha} onChange={(evento) => {
                 setSenha(evento.target.value)
                 valido('senha')
-              }} onKeyPress={(evento) => {
-                if(evento.key === 'Enter'){
-                  conectar()
-                }
-              }}/>
+              }} onKeyPress={(evento) => enter(evento)}/>
               <i className={'icone-senha fas ' + icone} onClick={() => {
                 if(icone === 'fa-eye'){
                   setIcone('fa-eye-slash')
@@ -110,20 +104,6 @@ const Login = (props) => {
           <Link to='/cadastrarse' className='link-login'>Está com fome? Cadastre-se agora</Link>
         </div>
       </div>
-      <div className='modal'>
-        <div className='modal-conteudo'>
-          <i className='fas fa-times fechar-modal' onClick={fecharModal}/>
-          <div className='modal-header'>
-            {header}
-          </div>
-          <div className='modal-body'>
-            {body}
-          </div>
-          <div className='modal-footer'>
-            {footer}
-          </div>
-        </div>
-      </div>  
     </>
   )
 }
