@@ -3,6 +3,7 @@ import React, {useState} from "react"
 
 import {Link} from "react-router-dom"
 import swal from 'sweetalert2';
+import {campo_invalido, campo_valido, validar_email} from "../functions/functions"
 
 const Cadastrar_se = (props) => {
 
@@ -11,30 +12,30 @@ const Cadastrar_se = (props) => {
 
     if(!nome){
       conectar = false
-      invalido('nome')
+      campo_invalido('nome')
     }
     if(!email){
       conectar = false
-      invalido('email')
+      campo_invalido('email')
     }
     if(!senha){
       conectar = false
-      invalido('senha')
+      campo_invalido('senha')
     }
     if(!confirmar_senha){
       conectar = false
-      invalido('confirmar_senha')
+      campo_invalido('confirmar_senha')
     }
   
 
     if(conectar){
-      if(email.indexOf('@') === -1 || email.substring(email.indexOf('@'), email.length).indexOf('.') === -1){
+      if(!validar_email(email)){
         swal.fire({
           title: 'Erro',
           text: 'Formato do email inválido',
           icon: 'error'
         })
-        invalido('email')
+        campo_invalido('email')
       }
       else if(senha !== confirmar_senha){
         swal.fire({
@@ -42,7 +43,7 @@ const Cadastrar_se = (props) => {
           text: 'Senhas não combinam, verifique se digitou corretamente',
           icon: 'error'
         })
-        invalido('confirmar_senha')
+        campo_invalido('confirmar_senha')
       }
       else {
         swal.fire({
@@ -62,27 +63,15 @@ const Cadastrar_se = (props) => {
     }
   }
 
-  const invalido = (id) => {
-    if(!document.getElementById(id).classList.contains('campo-obrigatorio')){
-      document.getElementById(id).classList.add('campo-obrigatorio')
-    } 
-  }
-
-  const valido = (id) => {
-    if(document.getElementById(id).classList.contains('campo-obrigatorio')){
-      document.getElementById(id).classList.remove('campo-obrigatorio')
-    } 
-  }
-
   const limparFormulario = () => {
     setNome('')
     setEmail('')
     setSenha('')
     setConfirmarSenha('')
-    valido('nome')
-    valido('email')
-    valido('senha')
-    valido('confirmar_senha')
+    campo_valido('nome')
+    campo_valido('email')
+    campo_valido('senha')
+    campo_valido('confirmar_senha')
   }
 
   const enter = (evento) => {
@@ -107,7 +96,7 @@ const Cadastrar_se = (props) => {
                   <div className='agrupar-campo-icone' id='nome'>
                       <input type='text' className='campo-input' placeholder='Nome' value={nome} onChange={(evento) => {
                           setNome(evento.target.value)
-                          valido('nome')
+                          campo_valido('nome')
                       }} onKeyPress={(evento) => enter(evento)}/>
                       <i className='icone fas fa-user' />
                   </div>
@@ -116,7 +105,7 @@ const Cadastrar_se = (props) => {
                   <div className='agrupar-campo-icone' id='email'>
                       <input type='email' className='campo-input' placeholder='Email' value={email} onChange={(evento) => {
                           setEmail(evento.target.value)
-                          valido('email')
+                          campo_valido('email')
                       }} onKeyPress={(evento) => enter(evento)}/>
                       <i className='icone fas fa-envelope' />
                   </div>
@@ -125,9 +114,9 @@ const Cadastrar_se = (props) => {
                   <div className='agrupar-campo-icone' id='senha'>
                       <input type='password' className='campo-input' placeholder='Senha' name='senha' value={senha} onChange={(evento) => {
                           setSenha(evento.target.value)
-                          valido('senha')
+                          campo_valido('senha')
                       }} onKeyPress={(evento) => enter(evento)}/>
-                      <i className={'icone-senha fas ' + icone} onClick={() => {
+                      <i className={`icone-senha fas ${icone}`} onClick={() => {
                         if(icone === 'fa-eye'){
                           setIcone('fa-eye-slash')
                           document.getElementsByName('senha')[0].type = 'text';
@@ -143,9 +132,9 @@ const Cadastrar_se = (props) => {
                   <div className='agrupar-campo-icone' id='confirmar_senha'>
                       <input type='password' className='campo-input' placeholder='Confirmar senha' name='senha_confirmar' value={confirmar_senha} onChange={(evento) => {
                           setConfirmarSenha(evento.target.value)
-                          valido('confirmar_senha')
+                          campo_valido('confirmar_senha')
                       }} onKeyPress={(evento) => enter(evento)}/>
-                      <i className={'icone-senha fas ' + icone_confirmar} onClick={() => {
+                      <i className={`icone-senha fas ${icone_confirmar}`} onClick={() => {
                         if(icone_confirmar === 'fa-eye'){
                           setIconeConfirmar('fa-eye-slash')
                           document.getElementsByName('senha_confirmar')[0].type = 'text';

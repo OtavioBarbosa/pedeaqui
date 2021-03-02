@@ -2,7 +2,8 @@
 import React, {useState} from "react"
 
 import {Link} from "react-router-dom"
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
+import {campo_invalido, campo_valido, validar_email} from "../functions/functions"
 
 const Login = (props) => {
 
@@ -11,45 +12,33 @@ const Login = (props) => {
 
     if(!email){
       conectar = false
-      invalido('email')
+      campo_invalido('email')
     }
     if(!senha){
       conectar = false
-      invalido('senha')
+      campo_invalido('senha')
     }
 
     if(conectar){
-      if(email.indexOf('@') === -1 || email.substring(email.indexOf('@'), email.length).indexOf('.') === -1){
-        swal.fire({
+      if(!validar_email(email)){
+        Swal.fire({
           title: 'Erro',
           text: 'Formato do email inválido',
           icon: 'error'
         })
-        invalido('email')
+        campo_invalido('email')
       }
       else{
         props.history.push('/pedeaqui/opcao')
       }
     }
     else{
-      swal.fire({
+      Swal.fire({
         title: 'Erro',
         text: 'É necessário preencher todos os campos',
         icon: 'error'
       })
     }
-  }
-
-  const invalido = (id) => {
-    if(!document.getElementById(id).classList.contains('campo-obrigatorio')){
-      document.getElementById(id).classList.add('campo-obrigatorio')
-    } 
-  }
-
-  const valido = (id) => {
-    if(document.getElementById(id).classList.contains('campo-obrigatorio')){
-      document.getElementById(id).classList.remove('campo-obrigatorio')
-    } 
   }
 
   const enter = (evento) => {
@@ -75,7 +64,7 @@ const Login = (props) => {
             <div className='agrupar-campo-icone' id='email'>
               <input type='email' className='campo-input' placeholder='Email' value={email} onChange={(evento) => {
                 setEmail(evento.target.value)
-                valido('email')
+                campo_valido('email')
               }} onKeyPress={(evento) => enter(evento)}/>
               <i className='icone fas fa-envelope' />
             </div>
@@ -84,9 +73,9 @@ const Login = (props) => {
             <div className='agrupar-campo-icone' id='senha'>
               <input type='password' className='campo-input' placeholder='Senha' name='senha' value={senha} onChange={(evento) => {
                 setSenha(evento.target.value)
-                valido('senha')
+                campo_valido('senha')
               }} onKeyPress={(evento) => enter(evento)}/>
-              <i className={'icone-senha fas ' + icone} onClick={() => {
+              <i className={`icone-senha fas ${icone}`} onClick={() => {
                 if(icone === 'fa-eye'){
                   setIcone('fa-eye-slash')
                   document.getElementsByName('senha')[0].type = 'text'

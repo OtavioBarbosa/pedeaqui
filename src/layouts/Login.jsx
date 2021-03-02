@@ -10,7 +10,7 @@ const Login = () => {
       if (prop.layout === "/") {
         return (
           <Route
-            path={prop.layout + prop.path}
+            path={`${prop.layout}${prop.path}`}
             component={prop.component}
             key={key}
           />

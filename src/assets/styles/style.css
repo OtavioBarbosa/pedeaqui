@@ -25,7 +25,7 @@ select:-webkit-autofill:focus {
 body{
     background: #F4F4F4;
     margin: 0;
-    height: 100vh;
+    height: 100vh !important;
 }
 
 #root{
@@ -305,6 +305,13 @@ body{
     cursor: pointer;
     padding: 8px;
     font-size: 1.3em;
+}
+
+/*
+    Correção de bug SWEETALERT
+*/
+body.swal2-height-auto{
+    height: 100vh !important;
 }
 
 @media (max-width: 1000px){

@@ -10,7 +10,7 @@ const Sistema = () => {
       if (prop.layout === "/pedeaqui") {
         return (
           <Route
-            path={prop.layout + prop.path}
+            path={`${prop.layout}${prop.path}`}
             component={prop.component}
             key={key}
           />
