@@ -3,7 +3,7 @@ import React, {useState} from "react"
 
 import {Link} from "react-router-dom"
 import swal from 'sweetalert2';
-import {campo_invalido, campo_valido, validar_email} from "../functions/functions"
+import {campoInvalido, campoValido, validarEmail} from "../functions/functions"
 
 const Cadastrar_se = (props) => {
 
@@ -12,30 +12,30 @@ const Cadastrar_se = (props) => {
 
     if(!nome){
       conectar = false
-      campo_invalido('nome')
+      campoInvalido('nome')
     }
     if(!email){
       conectar = false
-      campo_invalido('email')
+      campoInvalido('email')
     }
     if(!senha){
       conectar = false
-      campo_invalido('senha')
+      campoInvalido('senha')
     }
     if(!confirmar_senha){
       conectar = false
-      campo_invalido('confirmar_senha')
+      campoInvalido('confirmar_senha')
     }
   
 
     if(conectar){
-      if(!validar_email(email)){
+      if(!validarEmail(email)){
         swal.fire({
           title: 'Erro',
           text: 'Formato do email inválido',
           icon: 'error'
         })
-        campo_invalido('email')
+        campoInvalido('email')
       }
       else if(senha !== confirmar_senha){
         swal.fire({
@@ -43,7 +43,7 @@ const Cadastrar_se = (props) => {
           text: 'Senhas não combinam, verifique se digitou corretamente',
           icon: 'error'
         })
-        campo_invalido('confirmar_senha')
+        campoInvalido('confirmar_senha')
       }
       else {
         swal.fire({
@@ -68,10 +68,10 @@ const Cadastrar_se = (props) => {
     setEmail('')
     setSenha('')
     setConfirmarSenha('')
-    campo_valido('nome')
-    campo_valido('email')
-    campo_valido('senha')
-    campo_valido('confirmar_senha')
+    campoValido('nome')
+    campoValido('email')
+    campoValido('senha')
+    campoValido('confirmar_senha')
   }
 
   const enter = (evento) => {
@@ -96,7 +96,7 @@ const Cadastrar_se = (props) => {
                   <div className='agrupar-campo-icone' id='nome'>
                       <input type='text' className='campo-input' placeholder='Nome' value={nome} onChange={(evento) => {
                           setNome(evento.target.value)
-                          campo_valido('nome')
+                          campoValido('nome')
                       }} onKeyPress={(evento) => enter(evento)}/>
                       <i className='icone fas fa-user' />
                   </div>
@@ -105,7 +105,7 @@ const Cadastrar_se = (props) => {
                   <div className='agrupar-campo-icone' id='email'>
                       <input type='email' className='campo-input' placeholder='Email' value={email} onChange={(evento) => {
                           setEmail(evento.target.value)
-                          campo_valido('email')
+                          campoValido('email')
                       }} onKeyPress={(evento) => enter(evento)}/>
                       <i className='icone fas fa-envelope' />
                   </div>
@@ -114,7 +114,7 @@ const Cadastrar_se = (props) => {
                   <div className='agrupar-campo-icone' id='senha'>
                       <input type='password' className='campo-input' placeholder='Senha' name='senha' value={senha} onChange={(evento) => {
                           setSenha(evento.target.value)
-                          campo_valido('senha')
+                          campoValido('senha')
                       }} onKeyPress={(evento) => enter(evento)}/>
                       <i className={`icone-senha fas ${icone}`} onClick={() => {
                         if(icone === 'fa-eye'){
@@ -132,7 +132,7 @@ const Cadastrar_se = (props) => {
                   <div className='agrupar-campo-icone' id='confirmar_senha'>
                       <input type='password' className='campo-input' placeholder='Confirmar senha' name='senha_confirmar' value={confirmar_senha} onChange={(evento) => {
                           setConfirmarSenha(evento.target.value)
-                          campo_valido('confirmar_senha')
+                          campoValido('confirmar_senha')
                       }} onKeyPress={(evento) => enter(evento)}/>
                       <i className={`icone-senha fas ${icone_confirmar}`} onClick={() => {
                         if(icone_confirmar === 'fa-eye'){

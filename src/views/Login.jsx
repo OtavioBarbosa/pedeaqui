@@ -3,7 +3,7 @@ import React, {useState} from "react"
 
 import {Link} from "react-router-dom"
 import Swal from 'sweetalert2';
-import {campo_invalido, campo_valido, validar_email} from "../functions/functions"
+import {campoInvalido, campoValido, validarEmail} from "../functions/functions"
 
 const Login = (props) => {
 
@@ -12,21 +12,21 @@ const Login = (props) => {
 
     if(!email){
       conectar = false
-      campo_invalido('email')
+      campoInvalido('email')
     }
     if(!senha){
       conectar = false
-      campo_invalido('senha')
+      campoInvalido('senha')
     }
 
     if(conectar){
-      if(!validar_email(email)){
+      if(!validarEmail(email)){
         Swal.fire({
           title: 'Erro',
           text: 'Formato do email inválido',
           icon: 'error'
         })
-        campo_invalido('email')
+        campoInvalido('email')
       }
       else{
         props.history.push('/pedeaqui/opcao')
@@ -64,7 +64,7 @@ const Login = (props) => {
             <div className='agrupar-campo-icone' id='email'>
               <input type='email' className='campo-input' placeholder='Email' value={email} onChange={(evento) => {
                 setEmail(evento.target.value)
-                campo_valido('email')
+                campoValido('email')
               }} onKeyPress={(evento) => enter(evento)}/>
               <i className='icone fas fa-envelope' />
             </div>
@@ -73,7 +73,7 @@ const Login = (props) => {
             <div className='agrupar-campo-icone' id='senha'>
               <input type='password' className='campo-input' placeholder='Senha' name='senha' value={senha} onChange={(evento) => {
                 setSenha(evento.target.value)
-                campo_valido('senha')
+                campoValido('senha')
               }} onKeyPress={(evento) => enter(evento)}/>
               <i className={`icone-senha fas ${icone}`} onClick={() => {
                 if(icone === 'fa-eye'){
