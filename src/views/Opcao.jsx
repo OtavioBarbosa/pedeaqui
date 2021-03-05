@@ -4,7 +4,7 @@ import React from "react"
 const Opcao = (props) => {
 
   const cardapio = () => {
-    props.history.push('/pedeaqui/restaurantes')
+    props.history.push('/pedeaqui/estabelecimentos')
   }
 
   const identificarMesa = () => {

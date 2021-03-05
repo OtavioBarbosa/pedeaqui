@@ -3,7 +3,7 @@ import Login from "./views/Login.jsx";
 import Cadastrar_se from "./views/Cadastrar_se.jsx";
 import Opcao from "./views/Opcao.jsx";
 import Cardapio from "./views/Cardapio.jsx";
-import Restaurantes from "./views/Restaurantes.jsx";
+import Estabelecimentos from "./views/Estabelecimentos.jsx";
 
 var routes = [
   {
@@ -35,10 +35,10 @@ var routes = [
     layout: "/pedeaqui"
   },
   {
-    path: "/restaurantes",
+    path: "/estabelecimentos",
     name: "Escolha o restaurante para exibir o cardápio",
     icon: "",
-    component: Restaurantes,
+    component: Estabelecimentos,
     layout: "/pedeaqui"
   },
   {

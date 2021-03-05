@@ -3,7 +3,7 @@ import React from "react"
 
 import Header from "../components/Header"
 
-const Restaurantes = () => {
+const Estabelecimentos = () => {
   return (
     <>
       <Header />
@@ -11,4 +11,4 @@ const Restaurantes = () => {
   )
 }
 
-export default Restaurantes
+export default Estabelecimentos
