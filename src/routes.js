@@ -1,9 +1,9 @@
 
-import Login from "./views/Login.jsx";
-import Cadastrar_se from "./views/Cadastrar_se.jsx";
-import Opcao from "./views/Opcao.jsx";
-import Cardapio from "./views/Cardapio.jsx";
-import Estabelecimentos from "./views/Estabelecimentos.jsx";
+import Login from "./pages/Login.jsx";
+import Cadastrar_se from "./pages/Cadastrar_se.jsx";
+import Opcao from "./pages/Opcao.jsx";
+import Cardapio from "./pages/Cardapio.jsx";
+import Estabelecimentos from "./pages/Estabelecimentos.jsx";
 
 var routes = [
   {
