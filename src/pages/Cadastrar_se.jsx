@@ -1,9 +1,9 @@
 
 import React, {useState} from "react"
 
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
 import swal from 'sweetalert2';
-import {campoInvalido, campoValido, validarEmail} from "../functions/functions"
+import {campoInvalido, campoValido, validarEmail} from "../utils/functions";
 
 const Cadastrar_se = (props) => {
 

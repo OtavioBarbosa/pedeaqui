@@ -1,18 +1,23 @@
-
 import React, {useState} from "react"
-
-import {Link} from "react-router-dom"
+import api from "../services/apis";
+import { login } from "../services/auth";
+import {Link} from "react-router-dom";
 import Swal from 'sweetalert2';
-import {campoInvalido, campoValido, validarEmail} from "../functions/functions"
+import {campoInvalido, campoValido} from "../utils/functions"
 
 const Login = (props) => {
 
-  const conectar = () => {
+  const [user, setUser] = useState('');
+  const [senha, setSenha] = useState('');
+  const [icone, setIcone] = useState('fa-eye');
+
+  const conectar = async () => {
+    
     var conectar = true
 
-    if(!email){
+    if(!user){
       conectar = false
-      campoInvalido('email')
+      campoInvalido('user')
     }
     if(!senha){
       conectar = false
@@ -20,16 +25,24 @@ const Login = (props) => {
     }
 
     if(conectar){
-      if(!validarEmail(email)){
+      try {
+        //! CORS ERROR, COLOQUEI OS HEADERS PARA TENTAR RESOLVER
+        const response = await api.post("/login", {acesso: user, senha}, {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Access-Control-Allow-Origin': 	'*',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE'
+          }
+        });
+        // login(response.data.token); //!descomentar apos resolver problema de cors
+        // props.history.push('/pedeaqui/opcao') //! descomentar apos resolver problema de cors
+
+      } catch (error) {
         Swal.fire({
-          title: 'Erro',
-          text: 'Formato do email inválido',
-          icon: 'error'
-        })
-        campoInvalido('email')
-      }
-      else{
-        props.history.push('/pedeaqui/opcao')
+              title: 'Erro',
+              text: 'Problema ao fazer Login',
+              icon: 'error'
+            });
       }
     }
     else{
@@ -47,9 +60,6 @@ const Login = (props) => {
     }
   }
 
-  const [email, setEmail] = useState('')
-  const [senha, setSenha] = useState('')
-  const [icone, setIcone] = useState('fa-eye')
   
   return (
     <>
@@ -61,12 +71,12 @@ const Login = (props) => {
         </div>  
         <div>
           <div className='grupo-input'>
-            <div className='agrupar-campo-icone' id='email'>
-              <input type='email' className='campo-input' placeholder='Email' value={email} onChange={(evento) => {
-                setEmail(evento.target.value)
-                campoValido('email')
+            <div className='agrupar-campo-icone' id='user'>
+              <input type='text' className='campo-input' placeholder='Usuário' value={user} onChange={(evento) => {
+                setUser(evento.target.value)
+                campoValido('user')
               }} onKeyPress={(evento) => enter(evento)}/>
-              <i className='icone fas fa-envelope' />
+              <i className='icone fas fa-user' />
             </div>
           </div>
           <div className='grupo-input'>
