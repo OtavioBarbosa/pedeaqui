@@ -9,7 +9,7 @@ const Opcao = (props) => {
   }
 
   const identificarMesa = () => {
-    props.history.push('/cadastrarse')
+    props.history.push('/pedeaqui/identificarmesa')
   }
 
   return (

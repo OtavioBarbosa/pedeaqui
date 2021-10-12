@@ -14,7 +14,7 @@ const Sistema = () => {
             component={prop.component}
             key={key}
           />
-        );
+        )
       } 
       else {
         return null

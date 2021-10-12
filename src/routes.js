@@ -1,9 +1,10 @@
 
-import Login from "./pages/Login.jsx";
-import Cadastrar_se from "./pages/Cadastrar_se.jsx";
-import Opcao from "./pages/Opcao.jsx";
-import Cardapio from "./pages/Cardapio.jsx";
-import Estabelecimentos from "./pages/Estabelecimentos.jsx";
+import Login from "./pages/Login.jsx"
+import Cadastrar_se from "./pages/Cadastrar_se.jsx"
+import Opcao from "./pages/Opcao.jsx"
+import Cardapio from "./pages/Cardapio.jsx"
+import Estabelecimentos from "./pages/Estabelecimentos.jsx"
+import IdentificarMesa from "./pages/IdentificarMesa"
 
 var routes = [
   {
@@ -48,6 +49,13 @@ var routes = [
     component: Cardapio,
     layout: "/pedeaqui"
   },
-];
+  {
+    path: "/identificarmesa",
+    name: "Identificar mesa que usuário irá se conectar",
+    icon: "",
+    component: IdentificarMesa,
+    layout: "/pedeaqui"
+  },
+]
 
-export default routes;
+export default routes

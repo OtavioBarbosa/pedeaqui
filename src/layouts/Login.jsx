@@ -14,7 +14,7 @@ const Login = () => {
             component={prop.component}
             key={key}
           />
-        );
+        )
       } 
       else {
         return null
