@@ -4,6 +4,7 @@ import { login } from "../services/auth"
 import {Link} from "react-router-dom"
 import Swal from 'sweetalert2'
 import {campoInvalido, campoValido} from "../utils/functions"
+import {createHmac} from "crypto"
 
 const Login = (props) => {
 
@@ -26,7 +27,7 @@ const Login = (props) => {
 
     if(conectar){
       try {
-        const response = (await api.post("/login", {acesso: user, senha})).data
+        const response = (await api.post("/login", {acesso: user, senha: createHmac('sha256', process.env.REACT_APP_SECRET).update(`${senha}`).digest('hex')})).data
         login(response.data.token)
         props.history.push('/pedeaqui/opcao')
       } catch (error) {

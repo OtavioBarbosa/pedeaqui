@@ -1,24 +1,33 @@
 import React, {useState} from "react"
-import QrReader from 'react-qr-reader'
+import QrReader from "react-qr-reader"
+import api from "../services/apis"
+import Swal from 'sweetalert2'
 
 const IdentificarMesa = (props) => {
 
   const [opcao, setOpcao] = useState(1)
   const [codigo, setCodigo] = useState('')
 
-  const identificarCodigo = (code) => {
-    console.log(code)
+  const identificarCodigo = async (code) => {
+    let mesa = (await api.post(`/mesas/identificar`, {codigo: code})).data
+    if(mesa.data.length === 0){
+      await Swal.fire({
+        title: 'Erro',
+        text: 'Mesa não encontrada',
+        icon: 'error'
+      })
+      setCodigo('')
+      return false
+    }
+    localStorage.setItem('mesa_pedeaqui', JSON.stringify(mesa.data[0]))
+    props.history.push(`/pedeaqui/cardapio/${mesa.data[0].estabelecimento_id}`)
   }
 
-  const qrCode = (code) => {
-    if(code){
+  const qrCode = async (code) => {
+    if(code && !codigo){
       setCodigo(code)
-      identificarCodigo(code)
+      await identificarCodigo(code)
     }
-  }
-  
-  const errorQrCode = (erro) => {
-    console.log(erro)
   }
 
   return (
@@ -36,7 +45,6 @@ const IdentificarMesa = (props) => {
           <div className="qr-code" style={{marginTop: '10%'}}>
             <QrReader
               delay={300}
-              onError={errorQrCode}
               onScan={qrCode}
             />
           </div>
