@@ -26,7 +26,6 @@ const Login = (props) => {
 
     if(conectar){
       try {
-        //! CORS ERROR, COLOQUEI OS HEADERS PARA TENTAR RESOLVER
         const response = await api.post("/login", {acesso: user, senha}, {
           headers: {
             'Content-Type': 'application/json; charset=utf-8',
@@ -34,13 +33,13 @@ const Login = (props) => {
             'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE'
           }
         });
-        // login(response.data.token); //!descomentar apos resolver problema de cors
-        // props.history.push('/pedeaqui/opcao') //! descomentar apos resolver problema de cors
+        login(response.data.data.token);
+        props.history.push('/pedeaqui/opcao')
 
       } catch (error) {
         Swal.fire({
               title: 'Erro',
-              text: 'Problema ao fazer Login',
+              text: 'Usuario ou senha incorretos',
               icon: 'error'
             });
       }
