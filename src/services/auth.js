@@ -1,6 +1,7 @@
-export const TOKEN_KEY = "";
+export const TOKEN_KEY = "token"; //name que sera salve no storage
 
 export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
+;
 
 export const getToken = () => localStorage.getItem(TOKEN_KEY);
 
