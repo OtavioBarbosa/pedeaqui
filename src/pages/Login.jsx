@@ -33,7 +33,7 @@ const Login = (props) => {
       } catch (error) {
         Swal.fire({
           title: 'Erro',
-          text: 'Problema ao fazer Login',
+          text: 'Usuário e/ou senha incorretos',
           icon: 'error'
         })
       }
