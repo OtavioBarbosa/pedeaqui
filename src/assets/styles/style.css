@@ -307,6 +307,61 @@ body{
     font-size: 1.3em;
 }
 
+.tab{
+    display: flex;
+    justify-content: center;
+}
+
+.tabpane{
+    border: none;
+    width: 170px;
+    height: 40px;
+    background-color: transparent;
+    color: #000000;
+    border-radius: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.tabpane-active{
+    border: none;
+    width: 170px;
+    height: 40px;
+    background-color: #D72424;
+    color: #FFFFFF;
+    border-radius: 30px;
+    font-weight: bolder;
+    box-shadow: 0px 0px 10px -2px #000000;
+    cursor: pointer;
+}
+
+.identificar-mesa {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: #FFFFFF;
+    flex-direction: column;
+}
+
+.qr-code{
+    display: flex;
+    justify-content: center;
+}
+
+.qr-code section{
+    width: 20%;
+}
+
+.qr-code section section{
+    border-radius: 5px;
+}
+
+.qr-code section section div{
+    box-shadow: #D72424 0px 0px 0px 5px inset !important;
+    border-style: dashed;
+}
+
 /*
     Correção de bug SWEETALERT
 */
@@ -355,7 +410,11 @@ body.swal2-height-auto{
     .header {
         padding: 15px;
     }
-    
+
+    .qr-code section{
+        width: 40%;
+    }
+
 }
 
 @media (max-width: 550px){
@@ -375,6 +434,10 @@ body.swal2-height-auto{
 
     .header {
         padding: 10px;
+    }
+
+    .qr-code section{
+        width: 80%;
     }
 
 }

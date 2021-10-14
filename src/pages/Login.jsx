@@ -1,18 +1,19 @@
 import React, {useState} from "react"
-import api from "../services/apis";
-import { login } from "../services/auth";
-import {Link} from "react-router-dom";
-import Swal from 'sweetalert2';
+import api from "../services/apis"
+import { login } from "../services/auth"
+import {Link} from "react-router-dom"
+import Swal from 'sweetalert2'
 import {campoInvalido, campoValido} from "../utils/functions"
+import {createHmac} from "crypto"
 
 const Login = (props) => {
 
-  const [user, setUser] = useState('');
-  const [senha, setSenha] = useState('');
-  const [icone, setIcone] = useState('fa-eye');
+  const [user, setUser] = useState('')
+  const [senha, setSenha] = useState('')
+  const [icone, setIcone] = useState('fa-eye')
 
   const conectar = async () => {
-    
+
     var conectar = true
 
     if(!user){
@@ -26,22 +27,15 @@ const Login = (props) => {
 
     if(conectar){
       try {
-        const response = await api.post("/login", {acesso: user, senha}, {
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-            'Access-Control-Allow-Origin': 	'*',
-            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-          }
-        });
-        login(response.data.data.token);
+        const response = (await api.post("/login", {acesso: user, senha: createHmac('sha256', process.env.REACT_APP_SECRET).update(`${senha}`).digest('hex')})).data
+        login(response.data.token)
         props.history.push('/pedeaqui/opcao')
-
       } catch (error) {
         Swal.fire({
-              title: 'Erro',
-              text: 'Usuario ou senha incorretos',
-              icon: 'error'
-            });
+          title: 'Erro',
+          text: 'Usuário e/ou senha incorretos',
+          icon: 'error'
+        })
       }
     }
     else{

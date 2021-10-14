@@ -1,9 +1,9 @@
 
 import React, {useState} from "react"
 
-import {Link} from "react-router-dom";
-import swal from 'sweetalert2';
-import {campoInvalido, campoValido, validarEmail} from "../utils/functions";
+import {Link} from "react-router-dom"
+import swal from 'sweetalert2'
+import {campoInvalido, campoValido, validarEmail} from "../utils/functions"
 
 const Cadastrar_se = (props) => {
 
@@ -119,11 +119,11 @@ const Cadastrar_se = (props) => {
                       <i className={`icone-senha fas ${icone}`} onClick={() => {
                         if(icone === 'fa-eye'){
                           setIcone('fa-eye-slash')
-                          document.getElementsByName('senha')[0].type = 'text';
+                          document.getElementsByName('senha')[0].type = 'text'
                         }
                         else{
                           setIcone('fa-eye')
-                          document.getElementsByName('senha')[0].type = 'password';
+                          document.getElementsByName('senha')[0].type = 'password'
                         } 
                       }}/>
                   </div>
@@ -137,11 +137,11 @@ const Cadastrar_se = (props) => {
                       <i className={`icone-senha fas ${icone_confirmar}`} onClick={() => {
                         if(icone_confirmar === 'fa-eye'){
                           setIconeConfirmar('fa-eye-slash')
-                          document.getElementsByName('senha_confirmar')[0].type = 'text';
+                          document.getElementsByName('senha_confirmar')[0].type = 'text'
                         }
                         else{
                           setIconeConfirmar('fa-eye')
-                          document.getElementsByName('senha_confirmar')[0].type = 'password';
+                          document.getElementsByName('senha_confirmar')[0].type = 'password'
                         } 
                       }}/>
                   </div>
@@ -156,4 +156,4 @@ const Cadastrar_se = (props) => {
   )
 }
 
-export default Cadastrar_se;
+export default Cadastrar_se
