@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 const Cardapio = (props) => {
 
   const [usuarios, setUsuarios] = useState([])
+  const [pedido_has_usuario, setPedidoHasUsuario] = useState({})
   const [nao_permitidos, setNaoPermitidos] = useState([])
   
   const permitirUsuario = async (pedido_has_usuario) => {
@@ -28,14 +29,44 @@ const Cardapio = (props) => {
     return null
   }
 
+  const getUsuarios = async () => {
+    let retorno = (await api.get(`/pedidos/usuarios/${getPedido()}`)).data
+    if(usuarios.length > 0){
+      verificarPermissao(retorno.data, usuarios)
+    }
+    setUsuarios(retorno.data)
+  }
+  
+  const verificarPermissao = (retorno, usuarios) => {
+    let pedido_has_usuario = usuarios.find(u => u.usuario_id === decodeToken())
+    let pedido_has_usuario_atualizado = retorno.find(u => u.usuario_id === decodeToken())
+    if(pedido_has_usuario && pedido_has_usuario_atualizado && !pedido_has_usuario.permitido && pedido_has_usuario_atualizado.permitido){
+      Swal.fire({
+        title: 'Ok',
+        text: 'O administrador liberou seu acesso',
+        icon: 'success'
+      })
+      return true
+    }
+    return false
+  }
+  
+  const timer = () => {
+    getUsuarios()
+  }
   
   useEffect(() => {
     const getUsuarios = async () => {
       let retorno = (await api.get(`/pedidos/usuarios/${getPedido()}`)).data
       setUsuarios(retorno.data)
+      setPedidoHasUsuario(retorno.data.find(r => r.usuario_id === decodeToken()))
     }
     getUsuarios()
   }, [])
+
+  useEffect(() => {
+    setInterval(timer, 60000);
+  })
 
   useEffect(() => {
     const usuariosNaoPermitidos = () => {
@@ -46,10 +77,12 @@ const Cardapio = (props) => {
   
   useEffect(() => {
     nao_permitidos.map(async (nao_permitido) => {
-      await permitirUsuario(nao_permitido)
+      if(pedido_has_usuario.admin){
+        await permitirUsuario(nao_permitido)
+      }
       return null
     })
-  }, [nao_permitidos])
+  }, [nao_permitidos, pedido_has_usuario])
 
   return (
     <>
