@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import QrReader from "react-qr-reader"
 import api from "../services/apis"
 import Swal from 'sweetalert2'
+import {decodeToken} from "../services/auth"
 
 const IdentificarMesa = (props) => {
 
@@ -22,6 +23,23 @@ const IdentificarMesa = (props) => {
     }
 
     localStorage.setItem('mesa_pedeaqui', JSON.stringify(identificacao.data.mesa[0]))
+
+    if(identificacao.data.usuarios.find(u => u.usuario_id === decodeToken() && u.permitido)){
+      localStorage.setItem('pedido_pedeaqui', identificacao.data.pedido[0].id)
+      props.history.push(`/pedeaqui/cardapio/${identificacao.data.mesa[0].estabelecimento_id}`)
+      return true
+    }
+    
+    if(identificacao.data.usuarios.find(u => u.usuario_id === decodeToken() && !u.permitido)){
+      await Swal.fire({
+        title: 'Ok',
+        text: 'Aguarde o administrador da mesa liberar seu acesso',
+        icon: 'success'
+      })
+      localStorage.setItem('pedido_pedeaqui', identificacao.data.pedido[0].id)
+      props.history.push(`/pedeaqui/cardapio/${identificacao.data.mesa[0].estabelecimento_id}`)
+      return true
+    }
     
     if(identificacao.data.pedido.length > 0){
       
@@ -41,6 +59,10 @@ const IdentificarMesa = (props) => {
           text: 'Aguarde o administrador da mesa liberar seu acesso',
           icon: 'success'
         })
+        localStorage.setItem('pedido_pedeaqui', identificacao.data.pedido[0].id)
+        await api.post('/pedidos/usuarios', {pedido_id: identificacao.data.pedido[0].id, usuario_id: decodeToken(), admin: 0, permitido: 0})
+        props.history.push(`/pedeaqui/cardapio/${identificacao.data.mesa[0].estabelecimento_id}`)
+        return true
       }
       
       if(acao.isDismissed){
@@ -81,6 +103,7 @@ const IdentificarMesa = (props) => {
     let pedido = (await api.post('/pedidos', {mesa_id: identificacao.data.mesa[0].id})).data
     localStorage.setItem('pedido_pedeaqui', pedido.data)
     props.history.push(`/pedeaqui/cardapio/${identificacao.data.mesa[0].estabelecimento_id}`)
+    return true
   }
 
   const qrCode = async (code) => {
