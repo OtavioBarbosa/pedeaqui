@@ -19,7 +19,8 @@ const Cardapio = (props) => {
       showConfirmButton: true,
       showCancelButton: true,
       confirmButtonText: 'Sim',
-      cancelButtonText: 'Não'
+      cancelButtonText: 'Não',
+      allowOutsideClick: false
     })
 
     if(acao.isConfirmed){
@@ -31,16 +32,14 @@ const Cardapio = (props) => {
 
   const getUsuarios = async () => {
     let retorno = (await api.get(`/pedidos/usuarios/${getPedido()}`)).data
-    if(usuarios.length > 0){
-      verificarPermissao(retorno.data, usuarios)
-    }
+    verificarPermissao(retorno.data, usuarios)
     setUsuarios(retorno.data)
   }
   
   const verificarPermissao = (retorno, usuarios) => {
     let pedido_has_usuario = usuarios.find(u => u.usuario_id === decodeToken())
     let pedido_has_usuario_atualizado = retorno.find(u => u.usuario_id === decodeToken())
-    if(pedido_has_usuario && pedido_has_usuario_atualizado && !pedido_has_usuario.permitido && pedido_has_usuario_atualizado.permitido){
+    if(pedido_has_usuario && pedido_has_usuario_atualizado && !pedido_has_usuario_atualizado.admin && !pedido_has_usuario.permitido && pedido_has_usuario_atualizado.permitido){
       Swal.fire({
         title: 'Ok',
         text: 'O administrador liberou seu acesso',
@@ -48,25 +47,34 @@ const Cardapio = (props) => {
       })
       return true
     }
+    if(!pedido_has_usuario_atualizado.admin && !pedido_has_usuario_atualizado.permitido){
+      Swal.fire({
+        title: 'Aguarde',
+        text: 'O administrador ainda não liberou seu acesso',
+        icon: 'warning',
+        showConfirmButton: false,
+        showCancelButton: false,
+        allowOutsideClick: false
+      })
+      return false
+    }
     return false
   }
-  
-  const timer = () => {
-    getUsuarios()
-  }
+
+  useEffect(() => {
+    setInterval(getUsuarios, 60000);
+  }, [])
   
   useEffect(() => {
     const getUsuarios = async () => {
       let retorno = (await api.get(`/pedidos/usuarios/${getPedido()}`)).data
+      verificarPermissao(retorno.data, [])
       setUsuarios(retorno.data)
       setPedidoHasUsuario(retorno.data.find(r => r.usuario_id === decodeToken()))
     }
     getUsuarios()
   }, [])
 
-  useEffect(() => {
-    setInterval(timer, 60000);
-  })
 
   useEffect(() => {
     const usuariosNaoPermitidos = () => {
