@@ -12,49 +12,56 @@ var routes = [
     name: "Login",
     icon: "",
     component: Login,
-    layout: "/"
+    layout: "/",
+    navigation: false
   },
   {
     path: "login",
     name: "Login",
     icon: "",
     component: Login,
-    layout: "/"
+    layout: "/",
+    navigation: false
   },
   {
     path: "cadastrarse",
     name: "Cadastrar-se",
     icon: "",
     component: Cadastrar_se,
-    layout: "/"
+    layout: "/",
+    navigation: false
   },
   {
     path: "/opcao",
     name: "Escolha o que deseja fazer",
     icon: "",
     component: Opcao,
-    layout: "/pedeaqui"
+    layout: "/pedeaqui",
+    navigation: false
   },
   {
     path: "/estabelecimentos",
     name: "Escolha o restaurante para exibir o cardápio",
     icon: "",
     component: Estabelecimentos,
-    layout: "/pedeaqui"
+    layout: "/pedeaqui",
+    navigation: true
   },
   {
     path: "/cardapio/:restaurante",
     name: "Exibir o cardápio do restaurante escolhido",
     icon: "",
     component: Cardapio,
-    layout: "/pedeaqui"
+    layout: "/pedeaqui",
+    navigation: true
   },
   {
     path: "/identificarmesa",
     name: "Identificar mesa que usuário irá se conectar",
     icon: "",
     component: IdentificarMesa,
-    layout: "/pedeaqui"
+    layout: "/pedeaqui",
+    navigation: false
   },
 ]
 

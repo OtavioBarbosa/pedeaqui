@@ -6,8 +6,7 @@ const Header = () => {
   return (
     <>
       <div className='header'>
-          <i className='fas fa-bars exibir-menu' />
-          <div className='imagem-restaurante'></div>
+        <i className='fas fa-bars exibir-menu' />
       </div>
     </>
   )

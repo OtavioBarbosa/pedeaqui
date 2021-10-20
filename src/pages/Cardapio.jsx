@@ -31,9 +31,11 @@ const Cardapio = (props) => {
   }
 
   const getUsuarios = async () => {
-    let retorno = (await api.get(`/pedidos/usuarios/${getPedido()}`)).data
-    verificarPermissao(retorno.data, usuarios)
-    setUsuarios(retorno.data)
+    if(getPedido()){
+      let retorno = (await api.get(`/pedidos/usuarios/${getPedido()}`)).data
+      verificarPermissao(retorno.data, usuarios)
+      setUsuarios(retorno.data)
+    }
   }
   
   const verificarPermissao = (retorno, usuarios) => {
@@ -67,10 +69,12 @@ const Cardapio = (props) => {
   
   useEffect(() => {
     const getUsuarios = async () => {
-      let retorno = (await api.get(`/pedidos/usuarios/${getPedido()}`)).data
-      verificarPermissao(retorno.data, [])
-      setUsuarios(retorno.data)
-      setPedidoHasUsuario(retorno.data.find(r => r.usuario_id === decodeToken()))
+      if(getPedido()){
+        let retorno = (await api.get(`/pedidos/usuarios/${getPedido()}`)).data
+        verificarPermissao(retorno.data, [])
+        setUsuarios(retorno.data)
+        setPedidoHasUsuario(retorno.data.find(r => r.usuario_id === decodeToken()))
+      }
     }
     getUsuarios()
   }, [])

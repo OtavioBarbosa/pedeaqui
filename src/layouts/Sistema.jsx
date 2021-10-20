@@ -2,6 +2,7 @@
 import React from "react"
 import { Route, Switch } from "react-router-dom"
 import routes from "../routes.js"
+import Navigation from "../components/Navigation.jsx"
 
 const Sistema = () => {
 
@@ -26,6 +27,7 @@ const Sistema = () => {
     <>
       <div className='fundo-sistema'>
         <Switch>{getRoutes(routes)}</Switch>
+        <Navigation/>
       </div>
     </>
   )
