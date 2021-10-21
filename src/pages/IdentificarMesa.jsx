@@ -129,7 +129,7 @@ const IdentificarMesa = (props) => {
           </button>
         </div>
         {opcao === 1 && 
-          <div className="qr-code" style={{marginTop: '10%'}}>
+          <div className="qr-code" style={{marginTop: '7%'}}>
             <QrReader
               delay={300}
               onScan={qrCode}
@@ -138,7 +138,7 @@ const IdentificarMesa = (props) => {
           </div>
         }
         {opcao === 2 && 
-          <div style={{marginTop: '10%'}}>
+          <div style={{marginTop: '7%'}}>
             <div className='grupo-input'>
               <div className='agrupar-campo-icone' id='codigo'>
                 <input type='text' className='campo-input' placeholder='Código da mesa' maxLength={6} value={codigo} onChange={(evento) => {

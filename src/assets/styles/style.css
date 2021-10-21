@@ -23,7 +23,7 @@ select:-webkit-autofill:focus {
 }
 
 body{
-    background: #F4F4F4;
+    background: #FFFFFF;
     margin: 0;
     height: 100vh !important;
 }
@@ -225,16 +225,15 @@ body{
 }
 
 .fundo-sistema {
+    background: #FFFFFF;
     height: 100%;
 }
 
 .fundo-opcao {
-    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #FFFFFF;
 }
 
 .cardapio-image{
@@ -285,7 +284,7 @@ body{
 
 .header {
     padding: 20px;
-    height: 40px;
+    height: 30px;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     display: flex;
@@ -301,10 +300,16 @@ body{
     background-size: contain;
 }
 
-.exibir-menu {
+.voltar {
     cursor: pointer;
-    padding: 8px;
-    font-size: 1.3em;
+    padding: 4px;
+    font-size: 1.4em;
+}
+
+.buscar {
+    cursor: pointer;
+    padding: 4px;
+    font-size: 1.2em;
 }
 
 .tab{
@@ -336,11 +341,10 @@ body{
 }
 
 .identificar-mesa {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 90%;
     display: flex;
     justify-content: center;
-    background: #FFFFFF;
     flex-direction: column;
 }
 
@@ -367,6 +371,35 @@ body{
 */
 body.swal2-height-auto{
     height: 100vh !important;
+}
+
+.navigation{
+    position: absolute;
+    width: 80vw;
+    height: 50px;
+    background-color: #D72424;
+    color: #FFFFFF;
+    border-radius: 30px;
+    top: 90%;
+    left: 10vw;
+}
+
+.navigation-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    float: left;
+    font-size: 19px;
+}
+
+.navigation-item a{
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.navigation-item a i:hover{
+    font-size: 20px;
 }
 
 @media (max-width: 1000px){
