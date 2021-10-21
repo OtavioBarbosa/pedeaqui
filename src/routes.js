@@ -13,7 +13,8 @@ var routes = [
     icon: "",
     component: Login,
     layout: "/",
-    navigation: false
+    navigation: false,
+    header: false
   },
   {
     path: "login",
@@ -21,7 +22,8 @@ var routes = [
     icon: "",
     component: Login,
     layout: "/",
-    navigation: false
+    navigation: false,
+    header: false
   },
   {
     path: "cadastrarse",
@@ -29,7 +31,8 @@ var routes = [
     icon: "",
     component: Cadastrar_se,
     layout: "/",
-    navigation: false
+    navigation: false,
+    header: false
   },
   {
     path: "/opcao",
@@ -37,7 +40,8 @@ var routes = [
     icon: "",
     component: Opcao,
     layout: "/pedeaqui",
-    navigation: false
+    navigation: false,
+    header: false
   },
   {
     path: "/estabelecimentos",
@@ -45,7 +49,8 @@ var routes = [
     icon: "",
     component: Estabelecimentos,
     layout: "/pedeaqui",
-    navigation: true
+    navigation: true,
+    header: true
   },
   {
     path: "/cardapio/:restaurante",
@@ -53,7 +58,8 @@ var routes = [
     icon: "",
     component: Cardapio,
     layout: "/pedeaqui",
-    navigation: true
+    navigation: true,
+    header: true
   },
   {
     path: "/identificarmesa",
@@ -61,7 +67,8 @@ var routes = [
     icon: "",
     component: IdentificarMesa,
     layout: "/pedeaqui",
-    navigation: false
+    navigation: false,
+    header: true
   },
 ]
 

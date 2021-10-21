@@ -3,6 +3,7 @@ import React from "react"
 import { Route, Switch } from "react-router-dom"
 import routes from "../routes.js"
 import Navigation from "../components/Navigation.jsx"
+import Header from "../components/Header.jsx"
 
 const Sistema = () => {
 
@@ -26,6 +27,7 @@ const Sistema = () => {
   return (
     <>
       <div className='fundo-sistema'>
+        <Header/>
         <Switch>{getRoutes(routes)}</Switch>
         <Navigation/>
       </div>
