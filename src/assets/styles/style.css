@@ -402,6 +402,81 @@ body.swal2-height-auto{
     font-size: 20px;
 }
 
+.nome-estabelecimento{
+    text-align: center;
+}
+
+.item-cardapio{
+    margin-left: 5%;
+    width: 90%;
+    display: flex;
+}
+
+.item-cardapio-informacoes{
+    margin-left: 12%;
+    border-radius: 50px;
+    width: 90%;
+    height: 90px;
+    background-color: #F0F0F0;
+}
+
+.info-item-cardapio{
+    margin-left: 15%;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    float: left;
+}
+
+.item-cardapio-imagem{
+    height: 80px;
+    position: absolute;
+}
+
+.item-cardapio-title{
+    font-size: 0.9em;
+}
+
+.item-cardapio-descricao{
+    font-size: 0.7em;
+}
+
+.item-cardapio-valor{
+    font-size: 0.8em;
+}
+
+.item-cardapio-add{
+    font-size: 1.2em;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.listagem-categorias{
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 20px;
+    display: flex;
+    overflow: auto;
+}
+
+.item-categoria{
+    width: 70px;
+    padding: 2%;
+}
+
+.imagem-categoria{
+    width: 70px;
+}
+
+.nome-categoria{
+    font-size: 0.7em;
+    text-align: center;
+}
+
 @media (max-width: 1000px){
     body{
         background: #FFFFFF;
@@ -471,6 +546,13 @@ body.swal2-height-auto{
 
     .qr-code section{
         width: 80%;
+    }
+
+}
+@media (max-width: 400px){
+
+    .item-cardapio-imagem{
+        margin-left: -15px;
     }
 
 }
