@@ -18,9 +18,14 @@ const getRota = () => {
     return window.location
 }
 
+const formatarDinheiro = (valor) => {
+    return valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+}
+
 export {
     campoInvalido,
     campoValido,
     validarEmail,
-    getRota
+    getRota,
+    formatarDinheiro
 }

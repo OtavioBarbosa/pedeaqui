@@ -1,15 +1,20 @@
 
 import React, {useEffect, useState} from "react"
-import {getPedido} from "../utils/storage"
+import {getPedido, getMesa} from "../utils/storage"
 import api from "../services/apis"
 import {decodeToken} from "../services/auth"
 import Swal from 'sweetalert2'
+import ItemCardapio from "../components/ItemCardapio"
+import Categoria from "../components/Categoria"
 
 const Cardapio = (props) => {
 
   const [usuarios, setUsuarios] = useState([])
   const [pedido_has_usuario, setPedidoHasUsuario] = useState({})
   const [nao_permitidos, setNaoPermitidos] = useState([])
+  const [estabelecimento, setEstabelecimento] = useState({})
+  const [categorias, setCategorias] = useState([])
+  const [itens_cardapios, setItensCardapios] = useState([])
   
   const permitirUsuario = async (pedido_has_usuario) => {
     let acao = await Swal.fire({
@@ -28,14 +33,6 @@ const Cardapio = (props) => {
     }
 
     return null
-  }
-
-  const getUsuarios = async () => {
-    if(getPedido()){
-      let retorno = (await api.get(`/pedidos/usuarios/${getPedido()}`)).data
-      verificarPermissao(retorno.data, usuarios)
-      setUsuarios(retorno.data)
-    }
   }
   
   const verificarPermissao = (retorno, usuarios) => {
@@ -62,6 +59,35 @@ const Cardapio = (props) => {
     }
     return false
   }
+
+  const getUsuarios = async () => {
+    if(getPedido()){
+      let retorno = (await api.get(`/pedidos/usuarios/${getPedido()}`)).data
+      verificarPermissao(retorno.data, usuarios)
+      setUsuarios(retorno.data)
+    }
+  }
+  
+  const getEstabelecimento = async () => {
+    let retorno = (await api.get(`/estabelecimentos/${getMesa().estabelecimento_id}`)).data
+    setEstabelecimento(retorno.data[0])
+  }
+
+  const getCategorias = async () => {
+    let retorno = (await api.get(`/categorias/cardapio`)).data
+    setCategorias(retorno.data)
+  }
+  
+  const getItensCardapios = async () => {
+    let retorno = (await api.get(`/itens/cardapios/${getMesa().estabelecimento_id}`)).data
+    setItensCardapios(retorno.data)
+  }
+
+  useEffect(() => {
+    getEstabelecimento()
+    getCategorias()
+    getItensCardapios()
+  }, [])
 
   useEffect(() => {
     setInterval(getUsuarios, 60000);
@@ -96,9 +122,19 @@ const Cardapio = (props) => {
     })
   }, [nao_permitidos, pedido_has_usuario])
 
+  const viewItemCardapio = (item_cardapio, i) => {
+    return <ItemCardapio item_cardapio={JSON.stringify(item_cardapio)} key={i}/>
+  }
+  
+  const viewCategoria = (categoria, i) => {
+    return <Categoria categoria={JSON.stringify(categoria)} key={i}/>
+  }
+
   return (
     <>
-
+      {estabelecimento && <h2 className="nome-estabelecimento">{estabelecimento.razao_social}</h2>}
+      {categorias.length > 0 && <div className="listagem-categorias">{categorias.map(viewCategoria)}</div>}
+      {itens_cardapios.length > 0 && itens_cardapios.map(viewItemCardapio)}
     </>
   )
 }
