@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react"
 import { formatarDinheiro } from "../utils/functions"
+import { Link } from "react-router-dom"
 
 const ItemCardapio = (props) => {
 
@@ -28,7 +29,9 @@ const ItemCardapio = (props) => {
             <div className="item-cardapio-descricao">{itemCardapio().descricao}</div>
             <div className="item-cardapio-valor"><strong>{formatarDinheiro(itemCardapio().valor)}</strong></div>
           </div>
-          <i className="fas fa-plus-circle item-cardapio-add" />
+          <Link className="item-cardapio-add" to={`/pedeaqui/itemcardapio/${itemCardapio().id}`}>
+            <i className="fas fa-plus-circle" />
+          </Link>
         </div>
       </div>}
     </>

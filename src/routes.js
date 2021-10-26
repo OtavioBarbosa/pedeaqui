@@ -5,6 +5,7 @@ import Opcao from "./pages/Opcao.jsx"
 import Cardapio from "./pages/Cardapio.jsx"
 import Estabelecimentos from "./pages/Estabelecimentos.jsx"
 import IdentificarMesa from "./pages/IdentificarMesa"
+import DetalheItemCardapio from "./pages/DetalheItemCardapio.jsx"
 
 var routes = [
   {
@@ -68,6 +69,15 @@ var routes = [
     component: IdentificarMesa,
     layout: "/pedeaqui",
     navigation: false,
+    header: true
+  },
+  {
+    path: "/itemcardapio/:id",
+    name: "Detalhe do item do cardápio selecionado",
+    icon: "",
+    component: DetalheItemCardapio,
+    layout: "/pedeaqui",
+    navigation: true,
     header: true
   },
 ]

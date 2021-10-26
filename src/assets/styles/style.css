@@ -453,6 +453,13 @@ body.swal2-height-auto{
     justify-content: center;
     align-items: center;
     height: 100%;
+    color: #000000;
+    text-decoration: none;
+    cursor: default;
+}
+
+.item-cardapio-add i{
+    cursor: pointer;
 }
 
 .listagem-categorias{
@@ -475,6 +482,14 @@ body.swal2-height-auto{
 .nome-categoria{
     font-size: 0.7em;
     text-align: center;
+}
+
+.carrossel{
+    display: flex;
+}
+
+.imagem-carrossel{
+    width: 70vw;
 }
 
 @media (max-width: 1000px){
