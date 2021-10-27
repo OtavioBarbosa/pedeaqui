@@ -1,11 +1,11 @@
 
 import Login from "./pages/Login.jsx"
 import Cadastrar_se from "./pages/Cadastrar_se.jsx"
-import Opcao from "./pages/Opcao.jsx"
-import Cardapio from "./pages/Cardapio.jsx"
-import Estabelecimentos from "./pages/Estabelecimentos.jsx"
-import IdentificarMesa from "./pages/IdentificarMesa"
-import DetalheItemCardapio from "./pages/DetalheItemCardapio.jsx"
+import Opcao from "./pages/Aplicacao/Opcao.jsx"
+import Cardapio from "./pages/Aplicacao/Cardapio.jsx"
+import Estabelecimentos from "./pages/Aplicacao/Estabelecimentos.jsx"
+import IdentificarMesa from "./pages/Aplicacao/IdentificarMesa"
+import DetalheItemCardapio from "./pages/Aplicacao/DetalheItemCardapio.jsx"
 
 var routes = [
   {

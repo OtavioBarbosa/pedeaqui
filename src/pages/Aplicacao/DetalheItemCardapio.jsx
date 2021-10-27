@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react"
-import Carrossel from "../components/Carrossel"
-import api from "../services/apis"
+import Carousel from "../../components/Carousel"
+import api from "../../services/apis"
 
 const DetalheItemCardapio = (props) => {
 
@@ -20,13 +20,13 @@ const DetalheItemCardapio = (props) => {
         getItemCardapio()
     }, [props.match.params.id])
 
-    const carregarCarrosel = () => {
-        return <Carrossel imagens={item_cardapio ? JSON.stringify(itemCardapio().imagens) : `[]`} key={`carrossel`} />
+    const carregarCarousel = () => {
+        return <Carousel imagens={item_cardapio ? JSON.stringify(itemCardapio().imagens) : `[]`} key={`carousel`} />
     }
 
     return (
         <>
-            {carregarCarrosel()}
+            {carregarCarousel()}
         </>
     )
 }

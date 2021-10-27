@@ -1,8 +1,8 @@
 import React, {useState} from "react"
 import QrReader from "react-qr-reader"
-import api from "../services/apis"
+import api from "../../services/apis"
 import Swal from 'sweetalert2'
-import {decodeToken} from "../services/auth"
+import {decodeToken} from "../../services/auth"
 
 const IdentificarMesa = (props) => {
 

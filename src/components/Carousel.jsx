@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react"
 
-const Carrossel = (props) => {
+const Carousel = (props) => {
 
   const [imagens, setImagens] = useState(null)
 
@@ -14,18 +14,18 @@ const Carrossel = (props) => {
   }, [props.imagens])
 
   const carregarImagem = (imagem, i) => {
-    return <>
-      <img className="imagem-carrossel" src={`${process.env.REACT_APP_BASE_URL}/${imagem.imagem}`} alt={imagem.nome_imagem} key={i}/>
-    </>
+    return <div className="item-carousel" key={i}>
+      <img className="imagem-carousel" src={`${process.env.REACT_APP_BASE_URL}/${imagem.imagem}`} alt={imagem.nome_imagem} />
+    </div>
   }
 
   return (
     <>
-      <div className="carrossel">
+      <div className="carousel">
         {imagens && getImagens().map(carregarImagem)}
       </div>
     </>
   )
 }
 
-export default Carrossel
+export default Carousel
