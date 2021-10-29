@@ -447,6 +447,14 @@ body.swal2-height-auto{
     font-size: 0.8em;
 }
 
+.valor-antigo-item-cardapio{
+    color: #D72424;
+    padding-left: 7px;
+    text-decoration: line-through;
+    font-weight: bolder;
+    font-size: 0.75em;
+}
+
 .item-cardapio-add{
     font-size: 1.2em;
     display: flex !important;
@@ -611,10 +619,6 @@ body.swal2-height-auto{
  
 .valor-adicionar-item-cardapio i{
     font-size: 1.2em;
-}
-
-.quantidade-item-cardapio{
-    padding: 0px 10px 0px 10px;
 }
 
 .total-item-cardapio{

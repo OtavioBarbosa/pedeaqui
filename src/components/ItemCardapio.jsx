@@ -7,6 +7,8 @@ const ItemCardapio = (props) => {
 
   const [item_cardapio, setItemCardapio] = useState(null)
   const [imagem_principal, setImagemPrincipal] = useState(null)
+  const [promocao, setPromocao] = useState(null)
+  const [valor_item_cardapio, setValorItemCardapio] = useState(null)
 
   const itemCardapio = () => {
     return JSON.parse(item_cardapio)
@@ -18,6 +20,23 @@ const ItemCardapio = (props) => {
     setImagemPrincipal(imagem_principal.length > 0 ? imagem_principal : [])
   }, [props.item_cardapio])
 
+  useEffect(() => {
+
+    const itemCardapio = JSON.parse(item_cardapio)
+    let valor = 0
+    if(item_cardapio && itemCardapio.promocoes.length > 0){
+        valor = Math.min(itemCardapio.promocoes.map(p => p.valor))
+        let promocao = itemCardapio.promocoes.find(p => p.valor === valor)
+        setPromocao(promocao)
+    }
+    else if(item_cardapio){
+        valor = itemCardapio.valor
+    }
+    
+    setValorItemCardapio(valor)
+
+  }, [item_cardapio])
+
   return (
     <>
       {item_cardapio && 
@@ -27,7 +46,15 @@ const ItemCardapio = (props) => {
           <div className="info-item-cardapio">
             <div className="item-cardapio-title"><strong>{itemCardapio().item}</strong></div>
             <div className="item-cardapio-descricao">{itemCardapio().descricao}</div>
-            <div className="item-cardapio-valor"><strong>{formatarDinheiro(itemCardapio().valor)}</strong></div>
+            <div className="item-cardapio-valor">
+              {!promocao && <strong>{formatarDinheiro(valor_item_cardapio)}</strong>}
+              {promocao && promocao.id && 
+                <div>
+                  <strong>{formatarDinheiro(valor_item_cardapio)}</strong>
+                  <label className="valor-antigo-item-cardapio">{formatarDinheiro(itemCardapio().valor)}</label>
+                </div>
+              }
+            </div>
           </div>
           <Link className="item-cardapio-add" to={`/pedeaqui/itemcardapio/${itemCardapio().id}`}>
             <i className="fas fa-plus-circle" />
