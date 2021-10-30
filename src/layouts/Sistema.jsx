@@ -4,6 +4,8 @@ import { Route, Switch } from "react-router-dom"
 import routes from "../routes.js"
 import Navigation from "../components/Navigation.jsx"
 import Header from "../components/Header.jsx"
+import Carrinho from "../components/Carrinho.jsx"
+import { getCarrinho } from "../utils/storage.js"
 
 const Sistema = () => {
 
@@ -29,6 +31,7 @@ const Sistema = () => {
       <div className='fundo-sistema'>
         <Header/>
         <Switch>{getRoutes(routes)}</Switch>
+        <Carrinho carrinho={getCarrinho()}/>
         <Navigation/>
       </div>
     </>

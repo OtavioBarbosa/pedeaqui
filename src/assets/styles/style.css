@@ -382,6 +382,7 @@ body.swal2-height-auto{
     border-radius: 30px;
     top: 90%;
     left: 10vw;
+    box-shadow: 0px 0px 10px -4px #000000;
 }
 
 .navigation-item{
@@ -441,6 +442,7 @@ body.swal2-height-auto{
 
 .item-cardapio-descricao{
     font-size: 0.7em;
+    text-align: justify;
 }
 
 .item-cardapio-valor{
@@ -623,6 +625,52 @@ body.swal2-height-auto{
 
 .total-item-cardapio{
     padding: 0px 0px 0px 20px;
+}
+
+.remover-adicionados{
+    color: #D72424;
+}
+
+.carrinho{
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    background-color: #F8C40B;
+    color: #FFFFFF;
+    border-radius: 20px;
+    top: 81%;
+    right: 10vw;
+    transform: rotate(45deg);
+    display: grid;    
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px -4px #000000;
+}
+
+.carrinho-conteudo{
+    transform: rotate(-45deg);
+    display: flex;
+}
+
+.carrinho i{
+    font-size: 1.3em;
+    margin-left: -5px;
+}
+
+.carrinho-itens-quantidade{
+    color: #FFFFFF;
+    background-color: #D72424;
+    width: 13px;
+    height: 13px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5em;
+    font-weight: bolder;
+    margin-left: 15px;
+    margin-top: -7px;
+    position: absolute;
 }
 
 @media (max-width: 1000px){
