@@ -75,6 +75,7 @@ const DetalheItemCardapio = (props) => {
         adicionar.adicionais = adicionais
         adicionar.acompanhamentos = acompanhamentos
         adicionar.observacao = observacao
+        adicionar.valor_total = valor_total_item_cardapio
 
         let carrinho = getCarrinho()
         carrinho.push(adicionar)

@@ -6,6 +6,7 @@ import Cardapio from "./pages/Aplicacao/Cardapio.jsx"
 import Estabelecimentos from "./pages/Aplicacao/Estabelecimentos.jsx"
 import IdentificarMesa from "./pages/Aplicacao/IdentificarMesa"
 import DetalheItemCardapio from "./pages/Aplicacao/DetalheItemCardapio.jsx"
+import ItensCarrinho from "./pages/Aplicacao/ItensCarrinho.jsx"
 
 var routes = [
   {
@@ -76,6 +77,15 @@ var routes = [
     name: "Detalhe do item do cardápio selecionado",
     icon: "",
     component: DetalheItemCardapio,
+    layout: "/pedeaqui",
+    navigation: true,
+    header: true
+  },
+  {
+    path: "/carrinho",
+    name: "Itens do cardápio selecionados",
+    icon: "",
+    component: ItensCarrinho,
     layout: "/pedeaqui",
     navigation: true,
     header: true
