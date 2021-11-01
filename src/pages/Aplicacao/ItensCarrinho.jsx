@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react"
 import ItemCarrinho from "../../components/ItemCarrinho"
-import { getCarrinho } from "../../utils/storage"
+import { getCarrinho, getMesa } from "../../utils/storage"
 import { formatarDinheiro } from "../../utils/functions"
 
 const ItensCarrinho = (props) => {
@@ -23,11 +23,20 @@ const ItensCarrinho = (props) => {
 
   return (
     <>
-      <div>
-        {formatarDinheiro(valor_total_carrinho)}
+      <div className="itens-carrinho-mesa">
+        <div>
+          <label className="identificacao">Mesa {getMesa().identificacao}</label><br/>
+          <label className="valor">{formatarDinheiro(valor_total_carrinho)}</label>
+        </div>
       </div>
       
       {getCarrinho().map(carregarItens)}
+
+      <div className="itens-carrinho-confirmar-pedido">
+        Confirmar pedido
+      </div>
+
+      <div style={{height: '100px'}} />
     </>
   )
 }
