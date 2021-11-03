@@ -74,6 +74,8 @@ const DetalheItemCardapio = (props) => {
         adicionar.promocao = promocao
         adicionar.adicionais = adicionais
         adicionar.acompanhamentos = acompanhamentos
+        adicionar.adicionais_obrigatorios = itemCardapio().adicionais.filter(a => a.obrigatorio === 1)
+        adicionar.acompanhamentos_obrigatorios = itemCardapio().acompanhamentos.filter(a => a.obrigatorio === 1)
         adicionar.observacao = observacao
         adicionar.valor_total = valor_total_item_cardapio
 

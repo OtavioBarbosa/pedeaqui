@@ -41,8 +41,10 @@ const ItemCardapio = (props) => {
     <>
       {item_cardapio && 
       <div className="item-cardapio">
-        {imagem_principal.length > 0 && <img className="item-cardapio-imagem" src={`${process.env.REACT_APP_BASE_URL}/${imagem_principal[0].imagem}`} alt={imagem_principal[0].nome_imagem}/>}
         <div className="item-cardapio-informacoes">
+          <div className="item-cardapio-imagem">
+            {imagem_principal.length > 0 && <img src={`${process.env.REACT_APP_BASE_URL}/${imagem_principal[0].imagem}`} alt={imagem_principal[0].nome_imagem}/>}
+          </div>
           <div className="info-item-cardapio">
             <div className="item-cardapio-title"><strong>{itemCardapio().item}</strong></div>
             <div className="item-cardapio-descricao">{itemCardapio().descricao}</div>

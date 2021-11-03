@@ -6,4 +6,6 @@ export const getMesa = () => localStorage.getItem(MESA) ? JSON.parse(localStorag
 
 export const getPedido = () => localStorage.getItem(PEDIDO) ? parseInt(localStorage.getItem(PEDIDO)) : null
 
+export const setCarrinho = (conteudo) => localStorage.setItem(CARRINHO, conteudo)
+
 export const getCarrinho = () => localStorage.getItem(CARRINHO) ? JSON.parse(localStorage.getItem(CARRINHO)) : []
