@@ -374,7 +374,7 @@ body.swal2-height-auto{
 }
 
 .navigation{
-    position: absolute;
+    position: fixed;
     width: 80vw;
     height: 50px;
     background-color: #D72424;
@@ -382,6 +382,7 @@ body.swal2-height-auto{
     border-radius: 30px;
     top: 90%;
     left: 10vw;
+    box-shadow: 0px 0px 10px -4px #000000;
 }
 
 .navigation-item{
@@ -416,13 +417,14 @@ body.swal2-height-auto{
     margin-left: 12%;
     border-radius: 50px;
     width: 90%;
-    height: 90px;
+    min-height: 90px;
     background-color: #F0F0F0;
+    display: flex;
 }
 
 .info-item-cardapio{
-    margin-left: 15%;
-    width: 70%;
+    margin-left: 2%;
+    width: 80%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -431,8 +433,14 @@ body.swal2-height-auto{
 }
 
 .item-cardapio-imagem{
+    margin-left: -55px;
+    display: flex;
+    align-items: center;
+}
+
+.item-cardapio-imagem img{
     height: 80px;
-    position: absolute;
+    object-fit: contain;
 }
 
 .item-cardapio-title{
@@ -441,10 +449,19 @@ body.swal2-height-auto{
 
 .item-cardapio-descricao{
     font-size: 0.7em;
+    text-align: justify;
 }
 
 .item-cardapio-valor{
     font-size: 0.8em;
+}
+
+.valor-antigo-item-cardapio{
+    color: #D72424;
+    padding-left: 7px;
+    text-decoration: line-through;
+    font-weight: bolder;
+    font-size: 0.75em;
 }
 
 .item-cardapio-add{
@@ -453,6 +470,14 @@ body.swal2-height-auto{
     justify-content: center;
     align-items: center;
     height: 100%;
+    color: #000000;
+    text-decoration: none;
+    cursor: default;
+    width: 20%;
+}
+
+.item-cardapio-add i{
+    cursor: pointer;
 }
 
 .listagem-categorias{
@@ -475,6 +500,452 @@ body.swal2-height-auto{
 .nome-categoria{
     font-size: 0.7em;
     text-align: center;
+}
+
+.carousel{
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+}
+
+.item-carousel{
+    flex: none;
+    width: 100%;
+    height: 300px;
+    scroll-snap-align: start;
+    display: grid;
+    place-items: center;
+}
+
+.imagem-carousel{
+    height: 85%;
+    object-fit: contain;
+}
+
+.carousel::-webkit-scrollbar {
+    height: 5px; 
+}
+
+.carousel::-webkit-scrollbar-track {
+    background: transparent;  
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background-color: #D72424;
+    border-radius: 20px;      
+    border: none;
+}
+
+.info-detalhe-item-cardapio{
+    padding: 0px 20px;
+}
+
+.item-detalhe-item-cardapio{
+    font-size: 26px;
+    font-weight: bolder;
+    margin-bottom: -8px;
+}
+
+.descricao-detalhe-item-cardapio{
+    text-align: justify;
+    margin-bottom: -8px;
+}
+
+.valor-detalhe-item-cardapio{
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.titulo-detalhe-item-cardapio{
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: #F0F0F0;
+    padding: 20px;
+    margin-bottom: 1px;
+    margin-top: 4px;
+}
+
+.opcoes{
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.nome-opcao{
+    font-size: 18px;
+    margin-bottom: -8px;
+}
+
+.valor-opcao{
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.icone-opcao{
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+.separar-itens{
+    border: 0;
+    border-bottom: 1px solid #C1C1C1;
+}
+
+.observacao-detalhe-item-cardapio{
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.observacao-detalhe-item-cardapio textarea{
+    width: 90%;
+    border-radius: 6px;
+    outline: none;
+    padding: 5px;
+    font-size: 1em;
+    border: 1px solid #B0B0B0;
+}
+
+.adicionar-detalhe-item-cardapio{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    color: #FFFFFF;
+    background-color: #D72424;
+}
+
+.acao-adicionar-detalhe-item-cardapio{
+    cursor: pointer;
+}
+
+.valor-adicionar-item-cardapio{
+    display: flex;
+    align-items: center;
+}
+ 
+.valor-adicionar-item-cardapio i{
+    font-size: 1.2em;
+}
+
+.total-item-cardapio{
+    padding: 0px 0px 0px 20px;
+}
+
+.remover-adicionados{
+    color: #D72424;
+}
+
+.carrinho{
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    background-color: #F8C40B;
+    color: #FFFFFF;
+    border-radius: 20px;
+    top: 81%;
+    right: 10vw;
+    transform: rotate(45deg);
+    display: grid;    
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px -4px #000000;
+}
+
+.carrinho-conteudo{
+    transform: rotate(-45deg);
+    display: flex;
+}
+
+.carrinho i{
+    font-size: 1.3em;
+    margin-left: -5px;
+}
+
+.carrinho-itens-quantidade{
+    color: #FFFFFF;
+    background-color: #D72424;
+    width: 13px;
+    height: 13px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5em;
+    font-weight: bolder;
+    margin-left: 15px;
+    margin-top: -7px;
+    position: absolute;
+}
+
+.item-carrinho{
+    margin-left: 5%;
+    width: 90%;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.item-carrinho-informacoes{
+    border-radius: 10px;
+    width: 100%;
+    min-height: 90px;
+    box-shadow: 0px 0px 10px -6px #000000;
+    display: flex;
+}
+
+.info-item-carrinho{
+    margin-left: 2%;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    float: left;
+}
+
+.item-carrinho-imagem{
+    display: flex;
+    align-items: center;
+}
+
+.item-carrinho-imagem img{
+    height: 80px;
+    object-fit: contain;
+}
+
+.item-carrinho-title{
+    font-size: 0.9em;
+}
+
+.item-carrinho-valor{
+    margin-top: 3px;
+    font-size: 0.8em;
+    color: #00C908;
+}
+
+.item-carrinho-adicionados{
+    margin-top: 3px;
+    font-size: 0.8em;
+}
+
+.item-carrinho-remover{
+    height: 100%;
+    width: 30%;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7em;
+}
+
+.item-carrinho-remover div{
+    text-align: center;
+    background-color: #D72424;
+    padding: 3px 0px;
+    width: 85%;
+    color: #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px -4px #000000;
+}
+
+.itens-carrinho-mesa{
+    width: 90%;
+    margin-left: 5%;
+    background-color: #F5F5F5;
+    height: 100px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0px 0px 10px -6px #000000;
+    border-radius: 5px;
+    border: 1px solid #D6D6D6;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.itens-carrinho-mesa .identificacao{
+    font-size: 1.5em;
+    font-weight: bolder;
+    height: 35px;
+}
+
+.itens-carrinho-mesa .valor{
+    font-size: 1.3em;
+    font-weight: bolder;
+    height: 35px;
+    color: #D72424;
+}
+
+.itens-carrinho-confirmar-pedido{
+    background-color: #D72424;
+    color: #FFFFFF;
+    box-shadow: 0px 0px 10px -4px #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bolder;
+    text-align: center;
+    padding: 10px 0px;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 50px;
+}
+
+
+.item-pedido{
+    margin-left: 5%;
+    width: 90%;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.item-pedido-informacoes{
+    border-radius: 10px;
+    width: 100%;
+    min-height: 90px;
+    box-shadow: 0px 0px 10px -6px #000000;
+    display: flex;
+}
+
+.info-item-pedido{
+    margin-left: 2%;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    float: left;
+}
+
+.item-pedido-imagem{
+    display: flex;
+    align-items: center;
+}
+
+.item-pedido-imagem img{
+    height: 80px;
+    object-fit: contain;
+}
+
+.item-pedido-title{
+    font-size: 0.9em;
+}
+
+.item-pedido-valor{
+    margin-top: 3px;
+    font-size: 0.8em;
+    color: #00C908;
+}
+
+.item-pedido-adicionados{
+    margin-top: 3px;
+    font-size: 0.8em;
+}
+
+.item-pedido-acao-status{
+    height: 100%;
+    width: 30%;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 0.7em;
+}
+
+.item-pedido-acao-remover{
+    text-align: center;
+    background-color: #D72424;
+    padding: 3px 0px;
+    width: 85%;
+    color: #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px -4px #000000;
+}
+
+.item-pedido-usuario{
+    margin-top: 5px;
+    font-size: 0.7em;
+}
+
+.itens-pedido-mesa{
+    width: 90%;
+    margin-left: 5%;
+    background-color: #F5F5F5;
+    height: 100px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0px 0px 10px -6px #000000;
+    border-radius: 5px;
+    border: 1px solid #D6D6D6;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.itens-pedido-mesa .identificacao{
+    font-size: 1.5em;
+    font-weight: bolder;
+    height: 35px;
+}
+
+.itens-pedido-mesa .valor{
+    font-size: 1.3em;
+    font-weight: bolder;
+    height: 35px;
+    color: #D72424;
+}
+
+.item-pedido-status-em-espera{
+    margin-bottom: 7px;
+    font-size: 0.9em;
+    text-align: center;
+    background-color: #EFEFEF;
+    padding: 5px 2px;
+    width: 85%;
+    color: #000000;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px -4px #000000;
+}
+
+.item-pedido-status-preparando{
+    margin-bottom: 7px;
+    font-size: 0.9em;
+    text-align: center;
+    background-color: #F8C40B;
+    padding: 5px 2px;
+    width: 85%;
+    color: #000000;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px -4px #000000;
+}
+
+.item-pedido-status-pronto{
+    margin-bottom: 7px;
+    font-size: 0.9em;
+    text-align: center;
+    background-color: #1724A0;
+    padding: 5px 2px;
+    width: 85%;
+    color: #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px -4px #000000;
+}
+
+.item-pedido-status-entregue{
+    margin-bottom: 7px;
+    font-size: 0.9em;
+    text-align: center;
+    background-color: #00C908;
+    padding: 5px 2px;
+    width: 85%;
+    color: #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px -4px #000000;
 }
 
 @media (max-width: 1000px){
@@ -546,13 +1017,6 @@ body.swal2-height-auto{
 
     .qr-code section{
         width: 80%;
-    }
-
-}
-@media (max-width: 400px){
-
-    .item-cardapio-imagem{
-        margin-left: -15px;
     }
 
 }

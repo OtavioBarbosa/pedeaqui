@@ -1,10 +1,13 @@
 
 import Login from "./pages/Login.jsx"
 import Cadastrar_se from "./pages/Cadastrar_se.jsx"
-import Opcao from "./pages/Opcao.jsx"
-import Cardapio from "./pages/Cardapio.jsx"
-import Estabelecimentos from "./pages/Estabelecimentos.jsx"
-import IdentificarMesa from "./pages/IdentificarMesa"
+import Opcao from "./pages/Aplicacao/Opcao.jsx"
+import Cardapio from "./pages/Aplicacao/Cardapio.jsx"
+import Estabelecimentos from "./pages/Aplicacao/Estabelecimentos.jsx"
+import IdentificarMesa from "./pages/Aplicacao/IdentificarMesa"
+import DetalheItemCardapio from "./pages/Aplicacao/DetalheItemCardapio.jsx"
+import ItensCarrinho from "./pages/Aplicacao/ItensCarrinho.jsx"
+import ItensPedido from "./pages/Aplicacao/ItensPedido.jsx"
 
 var routes = [
   {
@@ -68,6 +71,33 @@ var routes = [
     component: IdentificarMesa,
     layout: "/pedeaqui",
     navigation: false,
+    header: true
+  },
+  {
+    path: "/itemcardapio/:id",
+    name: "Detalhe do item do cardápio selecionado",
+    icon: "",
+    component: DetalheItemCardapio,
+    layout: "/pedeaqui",
+    navigation: true,
+    header: true
+  },
+  {
+    path: "/carrinho",
+    name: "Itens do cardápio selecionados",
+    icon: "",
+    component: ItensCarrinho,
+    layout: "/pedeaqui",
+    navigation: true,
+    header: true
+  },
+  {
+    path: "/pedido",
+    name: "Itens do cardápio pedidos pelos clientes",
+    icon: "",
+    component: ItensPedido,
+    layout: "/pedeaqui",
+    navigation: true,
     header: true
   },
 ]
