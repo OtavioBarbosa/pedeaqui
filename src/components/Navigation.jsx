@@ -35,7 +35,7 @@ const Navigation = (props) => {
           </Link>
         </div>
         {visualizarItem() && <div className='navigation-item' style={{width: visualizarItem() ? '25%' : '50%'}}>
-          <Link to={`/pedeaqui/pedido/${getPedido()}`}>
+          <Link to={`/pedeaqui/pedido`}>
             <i className='fas fa-clipboard-list' />
           </Link>
         </div>}
