@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react"
-import { formatarDinheiro } from "../utils/functions"
+import { formatarDinheiro } from "../../utils/functions"
 
 const ItemPedido = (props) => {
 

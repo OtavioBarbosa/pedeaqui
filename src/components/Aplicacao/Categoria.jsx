@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react"
-import imagem from '../assets/imgs/imagem.svg'
+import imagem from '../../assets/imgs/imagem.svg'
 
 const Categoria = (props) => {
 

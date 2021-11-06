@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react"
-import ItemPedido from "../../components/ItemPedido"
+import ItemPedido from "../../components/Aplicacao/ItemPedido"
 import { getMesa, getPedido } from "../../utils/storage"
 import { formatarDinheiro } from "../../utils/functions"
 import api from "../../services/apis"

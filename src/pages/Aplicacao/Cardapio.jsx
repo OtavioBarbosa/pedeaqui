@@ -4,8 +4,8 @@ import {getPedido, getMesa} from "../../utils/storage"
 import api from "../../services/apis"
 import {decodeToken} from "../../services/auth"
 import Swal from 'sweetalert2'
-import ItemCardapio from "../../components/ItemCardapio"
-import Categoria from "../../components/Categoria"
+import ItemCardapio from "../../components/Aplicacao/ItemCardapio"
+import Categoria from "../../components/Aplicacao/Categoria"
 
 const Cardapio = (props) => {
 

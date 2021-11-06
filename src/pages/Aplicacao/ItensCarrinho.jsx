@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react"
-import ItemCarrinho from "../../components/ItemCarrinho"
+import ItemCarrinho from "../../components/Aplicacao/ItemCarrinho"
 import { getCarrinho, getMesa, setCarrinho, getPedido } from "../../utils/storage"
 import { formatarDinheiro } from "../../utils/functions"
 import api from "../../services/apis"

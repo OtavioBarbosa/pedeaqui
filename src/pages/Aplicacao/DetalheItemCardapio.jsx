@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router"
-import Carousel from "../../components/Carousel"
+import Carousel from "../../components/Aplicacao/Carousel"
 import api from "../../services/apis"
 import { formatarDinheiro } from "../../utils/functions"
 import { getCarrinho, getMesa } from "../../utils/storage"

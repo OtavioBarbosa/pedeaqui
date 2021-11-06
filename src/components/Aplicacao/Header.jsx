@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react"
-import { getRota } from "../utils/functions"
-import routes from "../routes.js"
+import { getRota } from "../../utils/functions"
+import routes from "../../routes.js"
 import { useHistory } from "react-router"
 
 const Header = (props) => {

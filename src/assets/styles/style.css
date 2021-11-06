@@ -23,7 +23,6 @@ select:-webkit-autofill:focus {
 }
 
 body{
-    background: #FFFFFF;
     margin: 0;
     height: 100vh !important;
 }
@@ -224,9 +223,12 @@ body{
     border-top: 1px solid rgba(0, 0, 0, 0.24);
 }
 
-.fundo-sistema {
+.fundo-aplicacao {
     background: #FFFFFF;
-    height: 100%;
+}
+
+.fundo-area-administrativa {
+    background: #F1F1F1;
 }
 
 .fundo-opcao {
@@ -289,6 +291,25 @@ body{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: space-between;
+}
+
+.header-area-administrativa {
+    padding: 20px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    color: #707070;
+}
+
+.header-area-administrativa .acao{
+    font-size: 1.6em;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.header-area-administrativa .acao i{
+    margin-left: 7px;
 }
 
 .imagem-restaurante {
@@ -948,10 +969,66 @@ body.swal2-height-auto{
     box-shadow: 0px 0px 10px -4px #000000;
 }
 
+.sidebar-pages{
+    display: flex;
+}
+
+.sidebar{
+    width: 300px;
+    height: 100vh;
+    background-color: #D72424;
+    color: #FFFFFF;
+    border-top-right-radius: 30px;
+    padding: 10px;
+}
+
+.pages-area-administrativa{
+    padding: 30px;
+}
+
+.sidebar .pedeaqui{
+    font-size: 1.8em;
+    font-weight: bolder;
+    text-align: center;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #FFFFFF;
+}
+
+.item-sidebar{
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 0.8em;
+    margin-top: 15px !important;
+}
+
+.item-sidebar a{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.item-sidebar i{
+    font-size: 1.1em;
+    margin-left: 10px;
+}
+
+.item-sidebar label{
+    margin-left: 15px;
+}
+
+.item-sidebar-ativo{
+    width: 7px;
+    height: 7px;
+    border-radius: 20px;
+    background-color: #F8C40B;
+    margin-left: 10px;
+    box-shadow: 0px 0px 5px 0px #000000;
+}
+
 @media (max-width: 1000px){
-    body{
-        background: #FFFFFF;
-    }
 
     .box-card{
         width: 100%;
@@ -989,6 +1066,10 @@ body.swal2-height-auto{
     .header {
         padding: 15px;
     }
+    
+    .header-area-administrativa {
+        padding: 15px;
+    }
 
     .qr-code section{
         width: 40%;
@@ -1012,6 +1093,10 @@ body.swal2-height-auto{
     }
 
     .header {
+        padding: 10px;
+    }
+    
+    .header-area-administrativa {
         padding: 10px;
     }
 

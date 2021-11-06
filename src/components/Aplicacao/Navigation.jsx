@@ -1,9 +1,9 @@
 
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { getMesa, getPedido } from "../utils/storage"
-import { getRota } from "../utils/functions"
-import routes from "../routes"
+import { getMesa, getPedido } from "../../utils/storage"
+import { getRota } from "../../utils/functions"
+import routes from "../../routes"
 
 const Navigation = (props) => {
 

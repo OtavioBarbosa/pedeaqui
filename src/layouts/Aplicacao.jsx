@@ -2,12 +2,12 @@
 import React from "react"
 import { Route, Switch } from "react-router-dom"
 import routes from "../routes.js"
-import Navigation from "../components/Navigation.jsx"
-import Header from "../components/Header.jsx"
-import Carrinho from "../components/Carrinho.jsx"
+import Navigation from "../components/Aplicacao/Navigation.jsx"
+import Header from "../components/Aplicacao/Header.jsx"
+import Carrinho from "../components/Aplicacao/Carrinho.jsx"
 import { getCarrinho } from "../utils/storage.js"
 
-const Sistema = () => {
+const Aplicacao = () => {
 
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
@@ -28,7 +28,7 @@ const Sistema = () => {
 
   return (
     <>
-      <div className='fundo-sistema'>
+      <div className='fundo-aplicacao'>
         <Header/>
         <Switch>{getRoutes(routes)}</Switch>
         <Carrinho carrinho={getCarrinho()}/>
@@ -38,4 +38,4 @@ const Sistema = () => {
   )
 }
 
-export default Sistema
+export default Aplicacao

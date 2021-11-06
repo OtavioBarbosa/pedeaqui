@@ -8,6 +8,7 @@ import IdentificarMesa from "./pages/Aplicacao/IdentificarMesa"
 import DetalheItemCardapio from "./pages/Aplicacao/DetalheItemCardapio.jsx"
 import ItensCarrinho from "./pages/Aplicacao/ItensCarrinho.jsx"
 import ItensPedido from "./pages/Aplicacao/ItensPedido.jsx"
+import Cozinha from "./pages/AreaAdministrativa/Cozinha.jsx"
 
 var routes = [
   {
@@ -97,6 +98,15 @@ var routes = [
     icon: "",
     component: ItensPedido,
     layout: "/pedeaqui",
+    navigation: true,
+    header: true
+  },
+  {
+    path: "/cozinha",
+    name: "Itens do cardápio pedidos pelos clientes para visualização dos funcionários da cozinha",
+    icon: "",
+    component: Cozinha,
+    layout: "/area_administrativa",
     navigation: true,
     header: true
   },

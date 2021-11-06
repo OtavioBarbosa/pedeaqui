@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router"
-import { getCarrinho } from "../utils/storage"
-import { getRota } from "../utils/functions"
+import { getCarrinho } from "../../utils/storage"
+import { getRota } from "../../utils/functions"
 
 const Carrinho = (props) => {
 
