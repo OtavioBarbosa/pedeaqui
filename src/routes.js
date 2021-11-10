@@ -108,7 +108,8 @@ var routes = [
     component: Cozinha,
     layout: "/area_administrativa",
     navigation: true,
-    header: true
+    header: true,
+    item_sidebar: "Cozinha"
   },
 ]
 

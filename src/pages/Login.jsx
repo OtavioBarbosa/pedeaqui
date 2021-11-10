@@ -29,7 +29,8 @@ const Login = (props) => {
       try {
         const response = (await api.post("/login", {acesso: user, senha: createHmac('sha256', process.env.REACT_APP_SECRET).update(`${senha}`).digest('hex')})).data
         login(response.data.token)
-        props.history.push('/pedeaqui/opcao')
+        if(response.data.permissoes.find(p => p.permissao === "Cliente")) props.history.push('/pedeaqui/opcao')
+        if(response.data.permissoes.find(p => p.permissao === "Estabelecimento")) props.history.push('/area_administrativa/cozinha')
       } catch (error) {
         Swal.fire({
           title: 'Erro',

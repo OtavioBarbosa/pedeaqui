@@ -225,6 +225,7 @@ body{
 
 .fundo-aplicacao {
     background: #FFFFFF;
+    height: 100vh;
 }
 
 .fundo-area-administrativa {
@@ -984,6 +985,7 @@ body.swal2-height-auto{
 
 .pages-area-administrativa{
     padding: 30px;
+    width: 100%;
 }
 
 .sidebar .pedeaqui{
@@ -1027,6 +1029,119 @@ body.swal2-height-auto{
     margin-left: 10px;
     box-shadow: 0px 0px 5px 0px #000000;
 }
+
+.item-sidebar-desativado{
+    width: 7px;
+    height: 7px;
+    margin-left: 10px;
+}
+
+.conteudo-cozinha{
+    width: 100%;
+    display: flex;
+}
+
+.item-pedido-area-administrativa{
+    padding: 15px;
+    width: 32%;
+}
+
+.item-pedido-area-administrativa-card{
+    padding: 20px;
+    height: 100%;
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 20px -8px #000000;
+    border-radius: 15px;
+}
+
+.item-pedido-area-administrativa-card .detalhes{
+    padding: 7px;
+}
+
+.item-pedido-area-administrativa-card .mesa{
+    font-size: 1.3em;
+    font-weight: bolder;
+}
+
+.item-pedido-area-administrativa-card .item{
+    margin-top: 10px;
+    font-size: 1.1em;
+    font-weight: bolder;
+    color: #D72424;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.item-pedido-area-administrativa-card .observacao{
+    margin-top: 15px;
+}
+
+.item-pedido-area-administrativa-card .item-detalhes{
+    font-weight: bolder;
+    font-size: 0.8em;
+}
+
+.item-detalhes .descricao-observacao{
+    color: #D72424;
+}
+
+.item-pedido-area-administrativa-card ul{
+    margin-top: 5px;
+    padding-inline-start: 20px !important;
+    margin-bottom: 5px;
+}
+
+.item-pedido-area-administrativa-card .extras{
+    color: #757575;
+    font-weight: bolder;
+    font-size: 0.9em;
+}
+
+.item-pedido-area-administrativa-card .acao{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -20px;
+}
+
+.item-pedido-area-administrativa-card .em-espera{
+    font-size: 0.7em;
+    font-weight: bolder;
+    width: 40%;
+    text-align: center;
+    padding: 5px 0px;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px -6px #000000;
+    background-color: #D72424;
+    color: #FFFFFF;
+}
+
+.item-pedido-area-administrativa-card .preparando{
+    font-size: 0.7em;
+    font-weight: bolder;
+    width: 40%;
+    text-align: center;
+    padding: 5px 0px;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px -6px #000000;
+    background-color: #D72424;
+    color: #FFFFFF;
+}
+
+.item-pedido-area-administrativa-card .pronto{
+    font-size: 0.7em;
+    font-weight: bolder;
+    width: 40%;
+    text-align: center;
+    padding: 5px 0px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px -6px #000000;
+    background-color: #00C908;
+    color: #FFFFFF;
+}
+
+
 
 @media (max-width: 1000px){
 
