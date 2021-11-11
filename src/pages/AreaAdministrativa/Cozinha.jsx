@@ -9,13 +9,21 @@ const Cozinha = (props) => {
   const [usuario, setUsuario] = useState(null)
   const [estabelecimento, setEstabelecimento] = useState(null)
   const [itens_pedidos, setItensPedidos] = useState([])
+  const [status, setStatus] = useState([])
+  const [filtro, setFiltro] = useState(1)
 
   useEffect(() => {
     const getUsuario = async () => {
       let retorno = (await api.get(`/usuarios/${decodeToken()}`)).data
       setUsuario(retorno.data[0])
     }
+    
+    const getStatus = async () => {
+      let retorno = (await api.get(`/status/pedidos`)).data
+      setStatus(retorno.data)
+    }
 
+    getStatus()
     getUsuario()
   }, [])
 
@@ -41,6 +49,10 @@ const Cozinha = (props) => {
 
     getPedidos()
   }, [estabelecimento])
+  
+  useEffect(() => {
+    setFiltro(status.length > 0 ? status.find(s => s.status === 'Em espera').id : 1)
+  }, [status])
 
   const carregarItensPedidos = (item_pedido, i) => {
     return <ItemPedido item_pedido={JSON.stringify(item_pedido)} key={i} />
@@ -49,7 +61,14 @@ const Cozinha = (props) => {
   return (
     <>
       <div className="conteudo-cozinha">
-        {itens_pedidos && itens_pedidos.map(carregarItensPedidos)}
+        <select className="select-filtro-area-administrativa" value={filtro} onChange={(event) => {
+          setFiltro(parseInt(event.target.value))
+        }}>
+          {status.length > 0 && status.filter(s => s.status === 'Em espera' || s.status === 'Preparando' || s.status === 'Pronto').map((s, i) => {
+            return <option value={s.id} key={i}>{s.status}</option>
+          })}
+        </select>
+        {itens_pedidos && itens_pedidos.filter(i => i.status_pedido_id === filtro).map(carregarItensPedidos)}
       </div>
     </>
   )

@@ -1165,6 +1165,15 @@ body.swal2-height-auto{
     color: #FFFFFF;
 }
 
+.select-filtro-area-administrativa{
+    margin-bottom: 30px;
+    width: 100%;
+    border: none;
+    border-radius: 7px;
+    padding: 12px;
+    outline: none;
+    -webkit-appearance: none;
+}
 
 
 @media (max-width: 1000px){
