@@ -601,6 +601,10 @@ body.swal2-height-auto{
     margin-bottom: -8px;
 }
 
+.nome-opcao-escolha{
+    font-size: 18px;
+}
+
 .valor-opcao{
     font-size: 16px;
     font-weight: bolder;
@@ -976,7 +980,7 @@ body.swal2-height-auto{
 
 .sidebar{
     width: 300px;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #D72424;
     color: #FFFFFF;
     border-top-right-radius: 30px;
@@ -1038,17 +1042,17 @@ body.swal2-height-auto{
 
 .conteudo-cozinha{
     width: 100%;
-    display: flex;
+    display: row;
 }
 
 .item-pedido-area-administrativa{
-    padding: 15px;
-    width: 32%;
+    padding: 10px;
+    width: 30%;
+    float: left;
 }
 
 .item-pedido-area-administrativa-card{
     padding: 20px;
-    height: 100%;
     background-color: #FFFFFF;
     box-shadow: 0px 1px 20px -8px #000000;
     border-radius: 15px;
@@ -1056,6 +1060,22 @@ body.swal2-height-auto{
 
 .item-pedido-area-administrativa-card .detalhes{
     padding: 7px;
+    height: 250px;
+    overflow-y: auto;
+}
+
+.item-pedido-area-administrativa-card .detalhes::-webkit-scrollbar {
+    width: 3px; 
+}
+
+.item-pedido-area-administrativa-card .detalhes::-webkit-scrollbar-track {
+    background: transparent;  
+}
+
+.item-pedido-area-administrativa-card .detalhes::-webkit-scrollbar-thumb {
+    background-color: #D72424;
+    border-radius: 20px;      
+    border: none;
 }
 
 .item-pedido-area-administrativa-card .mesa{
@@ -1096,11 +1116,15 @@ body.swal2-height-auto{
     font-size: 0.9em;
 }
 
+.item-pedido-area-administrativa-card .extras-escolha{
+    color: #D72424;
+}
+
 .item-pedido-area-administrativa-card .acao{
     width: 100%;
+    margin-top: 20px;
     display: flex;
     justify-content: flex-end;
-    margin-bottom: -20px;
 }
 
 .item-pedido-area-administrativa-card .em-espera{
@@ -1188,6 +1212,22 @@ body.swal2-height-auto{
 
     .qr-code section{
         width: 40%;
+    }
+
+}
+
+@media (max-width: 1200px){
+
+    .item-pedido-area-administrativa{
+        width: 46%;
+    }
+
+}
+
+@media (max-width: 800px){
+
+    .item-pedido-area-administrativa{
+        width: 98%;
     }
 
 }

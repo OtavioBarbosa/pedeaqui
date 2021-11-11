@@ -58,7 +58,8 @@ const ItensCarrinho = (props) => {
         adicionais: item_carrinho.adicionais, 
         acompanhamentos: item_carrinho.acompanhamentos,
         adicionais_obrigatorios: item_carrinho.adicionais_obrigatorios, 
-        acompanhamentos_obrigatorios: item_carrinho.acompanhamentos_obrigatorios 
+        acompanhamentos_obrigatorios: item_carrinho.acompanhamentos_obrigatorios,
+        escolhas: item_carrinho.escolhas
       }
       
       let retorno = (await api.post(`/itens_pedidos`, requisicao))

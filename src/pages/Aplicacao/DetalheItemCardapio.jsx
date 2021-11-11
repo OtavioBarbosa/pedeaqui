@@ -16,6 +16,7 @@ const DetalheItemCardapio = (props) => {
     const [valor_total_item_cardapio, setValorTotalItemCardapio] = useState(null)
     const [adicionais] = useState([])
     const [acompanhamentos] = useState([])
+    const [escolhas] = useState([])
 
     const itemCardapio = () => {
         return JSON.parse(item_cardapio)
@@ -76,6 +77,7 @@ const DetalheItemCardapio = (props) => {
         adicionar.acompanhamentos = acompanhamentos
         adicionar.adicionais_obrigatorios = itemCardapio().adicionais.filter(a => a.obrigatorio === 1)
         adicionar.acompanhamentos_obrigatorios = itemCardapio().acompanhamentos.filter(a => a.obrigatorio === 1)
+        adicionar.escolhas = escolhas.filter(e => e.opcao)
         adicionar.observacao = observacao
         adicionar.valor_total = valor_total_item_cardapio
 
@@ -117,6 +119,23 @@ const DetalheItemCardapio = (props) => {
                 </div>
             </div>
             {i+1 !== itemCardapio().acompanhamentos.filter(a => a.obrigatorio === 0).length && <hr className="separar-itens"/>}
+        </div>
+    }
+    
+    const carregarEscolhas = (escolha, i) => {
+        return <div key={i}>
+            <div className="opcoes">
+                <div>
+                    <p className="nome-opcao-escolha">{escolha.opcao}</p>
+                </div>
+                <div className="icone-opcao">
+                    <input type="radio" name={escolha.escolha_id} onChange={(event) => {
+                        let mudar = escolhas.find(e => e.escolha.id === escolha.escolha_id)
+                        mudar.opcao = escolha
+                    }}/>
+                </div>
+            </div>
+            {i+1 !== itemCardapio().escolhas.find(e => e.id === escolha.escolha_id).opcoes.length && <hr className="separar-itens"/>}
         </div>
     }
     
@@ -192,6 +211,16 @@ const DetalheItemCardapio = (props) => {
                     <p className="titulo-detalhe-item-cardapio">Acompanhamentos adicionais</p>
                     {itemCardapio().acompanhamentos.filter(a => a.obrigatorio === 0).map(carregarAcompanhamentos)}
                 </div>
+            }
+            
+            {item_cardapio && itemCardapio().escolhas.length > 0 &&
+                itemCardapio().escolhas.map((e, i) => {
+                    escolhas.push({escolha: e, opcao: null})
+                    return <div key={i}>
+                        <p className="titulo-detalhe-item-cardapio">{e.escolha}</p>
+                        {e.opcoes.map(carregarEscolhas)}
+                    </div>
+                })
             }
             
             {item_cardapio && itemCardapio().acompanhamentos.length > 0 && itemCardapio().acompanhamentos.filter(a => a.obrigatorio === 1).length > 0 &&

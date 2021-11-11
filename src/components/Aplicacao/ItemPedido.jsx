@@ -29,6 +29,12 @@ const ItemPedido = (props) => {
     </div>
   }
 
+  const carregarEscolhas = (escolha, i) => {
+    return <div className="item-carrinho-adicionados" key={i}>
+      {escolha.escolha}: <strong>{escolha.opcao}</strong>
+    </div>
+  }
+
   const excluirItem = async () => {
     await props.excluir_item()
   }
@@ -47,6 +53,7 @@ const ItemPedido = (props) => {
             <div className="item-pedido-adicionados">
               {itemPedido().adicionais.length > 0 && itemPedido().adicionais.map(carregarAdicionais)}
               {itemPedido().acompanhamentos.length > 0 && itemPedido().acompanhamentos.map(carregarAcompanhamentos)}
+              {itemPedido().escolhas.length > 0 && itemPedido().escolhas.map(carregarEscolhas)}
             </div>
             <div className="item-pedido-usuario"><strong>{itemPedido().nome}</strong></div>
           </div>

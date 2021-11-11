@@ -25,6 +25,12 @@ const ItemPedido = (props) => {
       {acompanhamento.acompanhamento}.
     </li>
   }
+  
+  const carregarEscolhas = (escolha, i) => {
+    return <li className="extras" key={i}>
+      {escolha.escolha}: <label className="extras-escolha">{escolha.opcao}.</label>
+    </li>
+  }
 
 
   return (
@@ -48,6 +54,13 @@ const ItemPedido = (props) => {
               <ul>
                 {itemPedido().adicionais.length === 0 && <li className="extras">Nenhum.</li>}
                 {itemPedido().adicionais.length > 0 && itemPedido().adicionais.map(carregarAdicionais)}
+              </ul>
+            </div>
+            <div className="item-detalhes">
+              Escolhas: 
+              <ul>
+                {itemPedido().escolhas.length === 0 && <li className="extras">Nenhum.</li>}
+                {itemPedido().escolhas.length > 0 && itemPedido().escolhas.map(carregarEscolhas)}
               </ul>
             </div>
           </div>

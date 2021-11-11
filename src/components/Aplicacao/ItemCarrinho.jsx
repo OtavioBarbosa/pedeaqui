@@ -28,6 +28,12 @@ const ItemCarrinho = (props) => {
       {acompanhamento.acompanhamento} ... <strong>{formatarDinheiro(acompanhamento.valor)}</strong>
     </div>
   }
+ 
+  const carregarEscolhas = (escolha, i) => {
+    return <div className="item-carrinho-adicionados" key={i}>
+      {escolha.escolha.escolha}: <strong>{escolha.opcao.opcao}</strong>
+    </div>
+  }
 
   const excluirItem = () => {
     props.excluir_item()
@@ -47,6 +53,7 @@ const ItemCarrinho = (props) => {
             <div className="item-carrinho-adicionados">
               {itemCarrinho().adicionais.length > 0 && itemCarrinho().adicionais.map(carregarAdicionais)}
               {itemCarrinho().acompanhamentos.length > 0 && itemCarrinho().acompanhamentos.map(carregarAcompanhamentos)}
+              {itemCarrinho().escolhas.length > 0 && itemCarrinho().escolhas.map(carregarEscolhas)}
             </div>
           </div>
           <div className="item-carrinho-remover">
