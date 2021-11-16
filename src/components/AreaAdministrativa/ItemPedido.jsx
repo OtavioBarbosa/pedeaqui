@@ -1,6 +1,5 @@
 
 import React, { useEffect, useState } from "react"
-// import { formatarDinheiro } from "../../utils/functions"
 
 const ItemPedido = (props) => {
 
@@ -65,7 +64,10 @@ const ItemPedido = (props) => {
             </div>
           </div>
           <div className="acao">
-            <div className={`${itemPedido().status.toLowerCase().replace(/ /g, '-')}`}>
+            <div className={`${itemPedido().status.toLowerCase().replace(/ /g, '-')}`} onClick={() => {
+                if(itemPedido().status === 'Em espera') props.alterarStatus(itemPedido(), props.status.find(s => s.status === 'Preparando').id)
+                if(itemPedido().status === 'Preparando') props.alterarStatus(itemPedido(), props.status.find(s => s.status === 'Pronto').id)
+            }}>
               {itemPedido().status === 'Em espera' && 'Iniciar preparo'}
               {itemPedido().status === 'Preparando' && 'Pronto'}
               {itemPedido().status === 'Pronto' && 'Pronto'}

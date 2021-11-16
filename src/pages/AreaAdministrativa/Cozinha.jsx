@@ -39,23 +39,35 @@ const Cozinha = (props) => {
   }, [usuario])
 
   useEffect(() => {
-
+    
     const getPedidos = async () => {
       if(estabelecimento){
         let retorno = (await api.get(`/itens_pedidos/estabelecimentos/cozinha/${estabelecimento.id}`)).data
         setItensPedidos(retorno.data)
       }
     }
-
+    
     getPedidos()
   }, [estabelecimento])
   
   useEffect(() => {
     setFiltro(status.length > 0 ? status.find(s => s.status === 'Em espera').id : 1)
   }, [status])
+  
+  const getPedidos = async () => {
+    if(estabelecimento){
+      let retorno = (await api.get(`/itens_pedidos/estabelecimentos/cozinha/${estabelecimento.id}`)).data
+      setItensPedidos(retorno.data)
+    }
+  }
+
+  const alterarStatusPedido = async (item_pedido, status_pedido_id) => {
+    await api.put(`/itens_pedidos/status_pedido/${item_pedido.id}`, {status_pedido_id})
+    await getPedidos()
+  }
 
   const carregarItensPedidos = (item_pedido, i) => {
-    return <ItemPedido item_pedido={JSON.stringify(item_pedido)} key={i} />
+    return <ItemPedido item_pedido={JSON.stringify(item_pedido)} alterarStatus={alterarStatusPedido} status={status} key={i} />
   }
   
   return (
