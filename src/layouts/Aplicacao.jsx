@@ -1,13 +1,17 @@
 
-import React from "react"
+import React, { useEffect } from "react"
 import { Route, Switch } from "react-router-dom"
 import routes from "../routes.js"
 import Navigation from "../components/Aplicacao/Navigation.jsx"
 import Header from "../components/Aplicacao/Header.jsx"
 import Carrinho from "../components/Aplicacao/Carrinho.jsx"
-import { getCarrinho } from "../utils/storage.js"
+import { getCarrinho, getMesa } from "../utils/storage.js"
+import { isAuthenticated } from "../services/auth.js"
+import { useHistory } from "react-router"
 
 const Aplicacao = () => {
+
+  const history = useHistory()
 
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
@@ -25,6 +29,15 @@ const Aplicacao = () => {
       }
     })
   }
+
+  useEffect(() => {
+    if(getMesa() && isAuthenticated()){
+      history.push(`/pedeaqui/cardapio/${getMesa().estabelecimento_id}`)
+    }
+    else if(isAuthenticated()){
+      history.push(`/pedeaqui/opcao`)
+    }
+  }, [history])
 
   return (
     <>

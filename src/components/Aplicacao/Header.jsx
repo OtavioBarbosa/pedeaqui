@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import { getRota } from "../../utils/functions"
 import routes from "../../routes.js"
 import { useHistory } from "react-router"
+import { logout } from "../../services/auth"
 
 const Header = (props) => {
 
@@ -20,13 +21,19 @@ const Header = (props) => {
   } 
 
   const visualizarBusca = () => {
-    return getRota().pathname.indexOf(`/pedeaqui/cardapio`) > -1
+    return false
+    // return getRota().pathname.indexOf(`/pedeaqui/cardapio`) > -1
   }
 
   const voltar = () => {
     if(getRota().pathname.indexOf(`/pedeaqui/cardapio`) === -1){
       history.go(-1)
     }
+  }
+
+  const sair = () => {
+    logout()
+    history.push('/pedeaqui')
   }
 
   useEffect(() => {
@@ -37,6 +44,7 @@ const Header = (props) => {
     <>
       {visualizar && <div className='header'>
         <i className='fas fa-angle-left voltar' onClick={() => {voltar()}}/>
+        <i className='fas fa-sign-out-alt sair' onClick={() => {sair()}}/>
         {visualizarBusca() && <i className='fas fa-search buscar' />}
       </div>}
     </>

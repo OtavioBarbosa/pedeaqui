@@ -133,7 +133,8 @@ const Cardapio = (props) => {
   return (
     <>
       {estabelecimento && <h2 className="nome-estabelecimento">{estabelecimento.razao_social}</h2>}
-      {categorias.length > 0 && <div className="listagem-categorias">{categorias.map(viewCategoria)}</div>}
+      {false && categorias.length > 0 && <div className="listagem-categorias">{categorias.map(viewCategoria)}</div>}
+      <div style={{marginTop: '40px'}} />
       {itens_cardapios.length > 0 && itens_cardapios.map(viewItemCardapio)}
     </>
   )

@@ -4,15 +4,21 @@ import React, {useState} from "react"
 import {Link} from "react-router-dom"
 import swal from 'sweetalert2'
 import {campoInvalido, campoValido, validarEmail} from "../utils/functions"
+import {createHmac} from "crypto"
+import api from "../services/apis"
 
 const Cadastrar_se = (props) => {
 
-  const cadastrar = () => {
+  const cadastrar = async () => {
     var conectar = true
 
     if(!nome){
       conectar = false
       campoInvalido('nome')
+    }
+    if(!usuario){
+      conectar = false
+      campoInvalido('usuario')
     }
     if(!email){
       conectar = false
@@ -46,12 +52,31 @@ const Cadastrar_se = (props) => {
         campoInvalido('confirmar_senha')
       }
       else {
-        swal.fire({
-          title: 'Cadastrado',
-          text: 'Registro criado com sucesso',
-          icon: 'success'
-        })
-        limparFormulario()
+        try{
+          await api.post("/clientes/cadastrar_se", {
+            nome: nome, 
+            usuario: usuario, 
+            email: email, 
+            senha: createHmac('sha256', process.env.REACT_APP_SECRET).update(`${senha}`).digest('hex')
+          })
+  
+          await swal.fire({
+            title: 'Cadastrado',
+            text: 'Registro criado com sucesso',
+            icon: 'success'
+          })
+          
+          props.history.push('/pedeaqui')
+        }
+        catch(error){
+          if(error.response){
+            await swal.fire({
+              title: 'Erro ao criar usuário',
+              text: error.response.data.error,
+              icon: 'error'
+            })
+          }
+        }
       }
     }
     else{
@@ -63,17 +88,6 @@ const Cadastrar_se = (props) => {
     }
   }
 
-  const limparFormulario = () => {
-    setNome('')
-    setEmail('')
-    setSenha('')
-    setConfirmarSenha('')
-    campoValido('nome')
-    campoValido('email')
-    campoValido('senha')
-    campoValido('confirmar_senha')
-  }
-
   const enter = (evento) => {
     if(evento.key === 'Enter'){
       cadastrar()
@@ -81,6 +95,7 @@ const Cadastrar_se = (props) => {
   }
 
   const [nome, setNome] = useState('')
+  const [usuario, setUsuario] = useState('')
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [confirmar_senha, setConfirmarSenha] = useState('')
@@ -97,6 +112,15 @@ const Cadastrar_se = (props) => {
                       <input type='text' className='campo-input' placeholder='Nome' value={nome} onChange={(evento) => {
                           setNome(evento.target.value)
                           campoValido('nome')
+                      }} onKeyPress={(evento) => enter(evento)}/>
+                      <i className='icone fas fa-user-tie' />
+                  </div>
+              </div>
+              <div className='grupo-input'>
+                  <div className='agrupar-campo-icone' id='usuario'>
+                      <input type='text' className='campo-input' placeholder='Usuário' value={usuario} onChange={(evento) => {
+                          setUsuario(evento.target.value)
+                          campoValido('usuario')
                       }} onKeyPress={(evento) => enter(evento)}/>
                       <i className='icone fas fa-user' />
                   </div>

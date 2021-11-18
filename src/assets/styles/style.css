@@ -42,7 +42,7 @@ body{
 
 .box-card {
     width: 50%;
-    height: 80%;
+    height: 90%;
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
@@ -329,6 +329,12 @@ body{
 }
 
 .buscar {
+    cursor: pointer;
+    padding: 4px;
+    font-size: 1.2em;
+}
+
+.sair {
     cursor: pointer;
     padding: 4px;
     font-size: 1.2em;

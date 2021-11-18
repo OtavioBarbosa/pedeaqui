@@ -29,17 +29,17 @@ const Navigation = (props) => {
   return (
     <>
       {visualizar && <div className='navigation'>
-        <div className='navigation-item' style={{width: visualizarItem() ? '25%' : '50%'}}>
+        <div className='navigation-item' style={{width: visualizarItem() ? '50%' : '100%'}}>
           <Link to={getMesa() ? `/pedeaqui/cardapio/${getMesa().estabelecimento_id}` : `/pedeaqui/estabelecimentos`}>
             <i className='fas fa-home' />
           </Link>
         </div>
-        {visualizarItem() && <div className='navigation-item' style={{width: visualizarItem() ? '25%' : '50%'}}>
+        {visualizarItem() && <div className='navigation-item' style={{width: visualizarItem() ? '50%' : '100%'}}>
           <Link to={`/pedeaqui/pedido`}>
             <i className='fas fa-clipboard-list' />
           </Link>
         </div>}
-        {visualizarItem() && <div className='navigation-item' style={{width: visualizarItem() ? '25%' : '50%'}}>
+        {/* {visualizarItem() && <div className='navigation-item' style={{width: visualizarItem() ? '25%' : '50%'}}>
           <Link to={`/pedeaqui/pagamento/${getPedido()}`}>
             <i className='fas fa-dollar-sign' />
           </Link>
@@ -48,7 +48,7 @@ const Navigation = (props) => {
           <Link to={`/pedeaqui/perfil`}>
             <i className='fas fa-user' />
           </Link>
-        </div>
+        </div> */}
       </div>}
     </>
   )

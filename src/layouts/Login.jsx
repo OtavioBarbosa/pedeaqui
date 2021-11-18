@@ -1,9 +1,14 @@
 
-import React from "react"
+import React, { useEffect } from "react"
 import { Route, Switch } from "react-router-dom"
 import routes from "../routes.js"
+import { getMesa } from "../utils/storage.js"
+import { isAuthenticated } from "../services/auth.js"
+import { useHistory } from "react-router"
 
 const Login = () => {
+
+  const history = useHistory()
 
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
@@ -21,6 +26,15 @@ const Login = () => {
       }
     })
   }
+
+  useEffect(() => {
+    if(getMesa() && isAuthenticated()){
+      history.push(`/pedeaqui/cardapio/${getMesa().estabelecimento_id}`)
+    }
+    else if(isAuthenticated()){
+      history.push(`/pedeaqui/opcao`)
+    }
+  }, [history])
 
   return (
     <>
