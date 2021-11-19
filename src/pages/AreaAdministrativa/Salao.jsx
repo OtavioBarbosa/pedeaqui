@@ -70,7 +70,7 @@ const Salao = (props) => {
   }
 
   const carregarItensPedidos = (item_pedido, i) => {
-    return <ItemPedido item_pedido={JSON.stringify(item_pedido)} alterarStatus={alterarStatusPedido} status={status} key={i} />
+    return <ItemPedido item_pedido={JSON.stringify(item_pedido)} visualizar_setor={filtro === 4 || filtro === 3 ? true : false} alterarStatus={alterarStatusPedido} status={status} key={i} />
   }
   
   return (

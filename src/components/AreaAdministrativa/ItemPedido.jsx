@@ -40,7 +40,7 @@ const ItemPedido = (props) => {
       {item_pedido && 
       <div className="item-pedido-area-administrativa">
         <div className="item-pedido-area-administrativa-card">
-          <div className="mesa">Mesa {itemPedido().identificacao}</div>
+          <div className="mesa">Mesa {itemPedido().identificacao} {props.visualizar_setor ? ` - ${itemPedido().preparado_por}` : ''}</div>
           <div className="detalhes">
             <div className="item">{itemPedido().item}</div>
             <div className="item-detalhes observacao">Observação: <label className="descricao-observacao">{itemPedido().observacao ? itemPedido().observacao : 'Nenhuma'}.</label></div>
