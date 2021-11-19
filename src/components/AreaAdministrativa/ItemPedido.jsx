@@ -1,9 +1,11 @@
 
 import React, { useEffect, useState } from "react"
+import { getRota } from "../../utils/functions"
 
 const ItemPedido = (props) => {
 
   const [item_pedido, setItemPedido] = useState(null)
+  const [salao, setSalao] = useState(false)
 
   const itemPedido = () => {
     return JSON.parse(item_pedido)
@@ -11,6 +13,7 @@ const ItemPedido = (props) => {
 
   useEffect(() => {
     setItemPedido(props.item_pedido)
+    setSalao(getRota().pathname.indexOf('/area_administrativa/salao') > -1 ? true : false)
   }, [props.item_pedido])
 
   const carregarAdicionais = (adicional, i) => {
@@ -64,13 +67,16 @@ const ItemPedido = (props) => {
             </div>
           </div>
           <div className="acao">
-            <div className={`${itemPedido().status.toLowerCase().replace(/ /g, '-')}`} onClick={() => {
+            <div className={`${itemPedido().status.toLowerCase().replace(/ /g, '-')}${itemPedido().status.toLowerCase().replace(/ /g, '-') === 'pronto' && salao ? '-salao' : ''}`} onClick={() => {
                 if(itemPedido().status === 'Em espera') props.alterarStatus(itemPedido(), props.status.find(s => s.status === 'Preparando').id)
                 if(itemPedido().status === 'Preparando') props.alterarStatus(itemPedido(), props.status.find(s => s.status === 'Pronto').id)
+                if(itemPedido().status === 'Pronto' && salao) props.alterarStatus(itemPedido(), props.status.find(s => s.status === 'Entregue').id)
             }}>
               {itemPedido().status === 'Em espera' && 'Iniciar preparo'}
               {itemPedido().status === 'Preparando' && 'Pronto'}
-              {itemPedido().status === 'Pronto' && 'Pronto'}
+              {itemPedido().status === 'Pronto' && !salao && 'Pronto'}
+              {itemPedido().status === 'Pronto' && salao && 'Entregar'}
+              {itemPedido().status === 'Entregue' && 'Entregue'}
             </div>
           </div>
         </div>

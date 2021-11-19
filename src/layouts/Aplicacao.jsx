@@ -8,6 +8,7 @@ import Carrinho from "../components/Aplicacao/Carrinho.jsx"
 import { getCarrinho, getMesa } from "../utils/storage.js"
 import { isAuthenticated } from "../services/auth.js"
 import { useHistory } from "react-router"
+import { getRota } from "../utils/functions.js"
 
 const Aplicacao = () => {
 
@@ -32,7 +33,9 @@ const Aplicacao = () => {
 
   useEffect(() => {
     if(getMesa() && isAuthenticated()){
-      history.push(`/pedeaqui/cardapio/${getMesa().estabelecimento_id}`)
+      if(getRota().pathname.indexOf('opcao') > -1){
+        history.push(`/pedeaqui/cardapio/${getMesa().estabelecimento_id}`)
+      }
     }
     else if(isAuthenticated()){
       history.push(`/pedeaqui/opcao`)

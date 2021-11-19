@@ -33,6 +33,22 @@ const Sidebar = (props) => {
             <label>Cozinha</label>
           </Link>
         </div>
+        <div className="item-sidebar">
+          <Link to={`/area_administrativa/bar`}>
+            {item_ativo === 'Bar' && <div className="item-sidebar-ativo"/>}
+            {item_ativo !== 'Bar' && <div className="item-sidebar-desativado"/>}
+            <i className="fas fa-beer" />
+            <label>Bar</label>
+          </Link>
+        </div>
+        <div className="item-sidebar">
+          <Link to={`/area_administrativa/salao`}>
+            {item_ativo === 'Salão' && <div className="item-sidebar-ativo"/>}
+            {item_ativo !== 'Salão' && <div className="item-sidebar-desativado"/>}
+            <i className="fas fa-user-tie" />
+            <label>Salão</label>
+          </Link>
+        </div>
       </div>
     </>
   )

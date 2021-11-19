@@ -9,6 +9,8 @@ import DetalheItemCardapio from "./pages/Aplicacao/DetalheItemCardapio.jsx"
 import ItensCarrinho from "./pages/Aplicacao/ItensCarrinho.jsx"
 import ItensPedido from "./pages/Aplicacao/ItensPedido.jsx"
 import Cozinha from "./pages/AreaAdministrativa/Cozinha.jsx"
+import Bar from "./pages/AreaAdministrativa/Bar.jsx"
+import Salao from "./pages/AreaAdministrativa/Salao.jsx"
 
 var routes = [
   {
@@ -110,6 +112,26 @@ var routes = [
     navigation: true,
     header: true,
     item_sidebar: "Cozinha"
+  },
+  {
+    path: "/bar",
+    name: "Itens do cardápio pedidos pelos clientes para visualização dos funcionários do bar",
+    icon: "",
+    component: Bar,
+    layout: "/area_administrativa",
+    navigation: true,
+    header: true,
+    item_sidebar: "Bar"
+  },
+  {
+    path: "/salao",
+    name: "Itens do cardápio pedidos pelos clientes para visualização dos funcionários do salão",
+    icon: "",
+    component: Salao,
+    layout: "/area_administrativa",
+    navigation: true,
+    header: true,
+    item_sidebar: "Salão"
   },
 ]
 

@@ -4,11 +4,12 @@ import ItemPedido from "../../components/AreaAdministrativa/ItemPedido"
 import api from "../../services/apis"
 import { decodeToken } from "../../services/auth"
 
-const Cozinha = (props) => {
+const Salao = (props) => {
 
   const [usuario, setUsuario] = useState(null)
   const [estabelecimento, setEstabelecimento] = useState(null)
   const [itens_pedidos, setItensPedidos] = useState([])
+  const [itens_salao, setItensSalao] = useState([])
   const [status, setStatus] = useState([])
   const [filtro, setFiltro] = useState(1)
 
@@ -42,8 +43,9 @@ const Cozinha = (props) => {
     
     const getPedidos = async () => {
       if(estabelecimento){
-        let retorno = (await api.get(`/itens_pedidos/estabelecimentos/cozinha/${estabelecimento.id}`)).data
+        let retorno = (await api.get(`/itens_pedidos/estabelecimentos/salao/${estabelecimento.id}`)).data
         setItensPedidos(retorno.data)
+        setItensSalao(retorno.data.filter(i => i.preparado_por === 'Salão'))
       }
     }
     
@@ -56,8 +58,9 @@ const Cozinha = (props) => {
   
   const getPedidos = async () => {
     if(estabelecimento){
-      let retorno = (await api.get(`/itens_pedidos/estabelecimentos/cozinha/${estabelecimento.id}`)).data
+      let retorno = (await api.get(`/itens_pedidos/estabelecimentos/salao/${estabelecimento.id}`)).data
       setItensPedidos(retorno.data)
+      setItensSalao(retorno.data.filter(i => i.preparado_por === 'Salão'))
     }
   }
 
@@ -76,14 +79,15 @@ const Cozinha = (props) => {
         <select className="select-filtro-area-administrativa" value={filtro} onChange={(event) => {
           setFiltro(parseInt(event.target.value))
         }}>
-          {status.length > 0 && status.filter(s => s.status === 'Em espera' || s.status === 'Preparando' || s.status === 'Pronto').map((s, i) => {
+          {status.length > 0 && status.map((s, i) => {
             return <option value={s.id} key={i}>{s.status}</option>
           })}
         </select>
-        {itens_pedidos && itens_pedidos.filter(i => i.status_pedido_id === filtro).map(carregarItensPedidos)}
+        {filtro && (filtro === 1 || filtro === 2) && itens_salao && itens_salao.filter(i => i.status_pedido_id === filtro).map(carregarItensPedidos)}
+        {filtro && (filtro === 4 || filtro === 3)  && itens_pedidos && itens_pedidos.filter(i => i.status_pedido_id === filtro).map(carregarItensPedidos)}
       </div>
     </>
   )
 }
 
-export default Cozinha;
+export default Salao;

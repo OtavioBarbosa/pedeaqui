@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react"
 import { formatarDinheiro } from "../../utils/functions"
 import { Link } from "react-router-dom"
+import imagem from '../../assets/imgs/imagem.svg'
 
 const ItemCardapio = (props) => {
 
@@ -44,6 +45,7 @@ const ItemCardapio = (props) => {
         <div className="item-cardapio-informacoes">
           <div className="item-cardapio-imagem">
             {imagem_principal.length > 0 && <img src={`${process.env.REACT_APP_BASE_URL}/${imagem_principal[0].imagem}`} alt={imagem_principal[0].nome_imagem}/>}
+            {imagem_principal.length === 0 && <img className="item-cardapio-sem-imagem" src={imagem} alt={imagem}/>}
           </div>
           <div className="info-item-cardapio">
             <div className="item-cardapio-title"><strong>{itemCardapio().item}</strong></div>

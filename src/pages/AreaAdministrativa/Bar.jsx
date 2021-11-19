@@ -4,7 +4,7 @@ import ItemPedido from "../../components/AreaAdministrativa/ItemPedido"
 import api from "../../services/apis"
 import { decodeToken } from "../../services/auth"
 
-const Cozinha = (props) => {
+const Bar = (props) => {
 
   const [usuario, setUsuario] = useState(null)
   const [estabelecimento, setEstabelecimento] = useState(null)
@@ -42,7 +42,7 @@ const Cozinha = (props) => {
     
     const getPedidos = async () => {
       if(estabelecimento){
-        let retorno = (await api.get(`/itens_pedidos/estabelecimentos/cozinha/${estabelecimento.id}`)).data
+        let retorno = (await api.get(`/itens_pedidos/estabelecimentos/bar/${estabelecimento.id}`)).data
         setItensPedidos(retorno.data)
       }
     }
@@ -56,7 +56,7 @@ const Cozinha = (props) => {
   
   const getPedidos = async () => {
     if(estabelecimento){
-      let retorno = (await api.get(`/itens_pedidos/estabelecimentos/cozinha/${estabelecimento.id}`)).data
+      let retorno = (await api.get(`/itens_pedidos/estabelecimentos/bar/${estabelecimento.id}`)).data
       setItensPedidos(retorno.data)
     }
   }
@@ -86,4 +86,4 @@ const Cozinha = (props) => {
   )
 }
 
-export default Cozinha;
+export default Bar;

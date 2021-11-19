@@ -311,6 +311,7 @@ body{
 
 .header-area-administrativa .acao i{
     margin-left: 7px;
+    cursor: pointer;
 }
 
 .imagem-restaurante {
@@ -439,6 +440,7 @@ body.swal2-height-auto{
     margin-left: 5%;
     width: 90%;
     display: flex;
+    margin-bottom: 5%;
 }
 
 .item-cardapio-informacoes{
@@ -464,6 +466,12 @@ body.swal2-height-auto{
     margin-left: -55px;
     display: flex;
     align-items: center;
+}
+
+.item-cardapio-sem-imagem{
+    width: 70px;
+    padding: 5px;
+    margin-left: 5px;
 }
 
 .item-cardapio-imagem img{
@@ -1046,7 +1054,7 @@ body.swal2-height-auto{
     margin-left: 10px;
 }
 
-.conteudo-cozinha{
+.conteudo-setores{
     width: 100%;
     display: row;
 }
@@ -1160,6 +1168,31 @@ body.swal2-height-auto{
 }
 
 .item-pedido-area-administrativa-card .pronto{
+    font-size: 0.7em;
+    font-weight: bolder;
+    width: 40%;
+    text-align: center;
+    padding: 5px 0px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px -6px #000000;
+    background-color: #00C908;
+    color: #FFFFFF;
+}
+
+.item-pedido-area-administrativa-card .pronto-salao{
+    font-size: 0.7em;
+    font-weight: bolder;
+    width: 40%;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px 0px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px -6px #000000;
+    background-color: #00C908;
+    color: #FFFFFF;
+}
+
+.item-pedido-area-administrativa-card .entregue{
     font-size: 0.7em;
     font-weight: bolder;
     width: 40%;
