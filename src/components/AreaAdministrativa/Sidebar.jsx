@@ -49,6 +49,14 @@ const Sidebar = (props) => {
             <label>Salão</label>
           </Link>
         </div>
+        <div className="item-sidebar">
+          <Link to={`/area_administrativa/cardapio`}>
+            {item_ativo === 'Cardápio' && <div className="item-sidebar-ativo"/>}
+            {item_ativo !== 'Cardápio' && <div className="item-sidebar-desativado"/>}
+            <i className="fas fa-list-alt" />
+            <label>Cardápio</label>
+          </Link>
+        </div>
       </div>
     </>
   )
