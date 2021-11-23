@@ -12,6 +12,7 @@ import Cozinha from "./pages/AreaAdministrativa/Cozinha.jsx"
 import Bar from "./pages/AreaAdministrativa/Bar.jsx"
 import Salao from "./pages/AreaAdministrativa/Salao.jsx"
 import CardapioAreaAdministrativa from "./pages/AreaAdministrativa/Cardapio.jsx" 
+import ItemCardapioAreaAdministrativa from "./pages/AreaAdministrativa/ItemCardapio.jsx" 
 
 var routes = [
   {
@@ -139,6 +140,16 @@ var routes = [
     name: "Itens do cardápio",
     icon: "",
     component: CardapioAreaAdministrativa,
+    layout: "/area_administrativa",
+    navigation: true,
+    header: true,
+    item_sidebar: "Cardápio"
+  },
+  {
+    path: "/itemcardapio/:id",
+    name: "Detalhe de um item do cardápio",
+    icon: "",
+    component: ItemCardapioAreaAdministrativa,
     layout: "/area_administrativa",
     navigation: true,
     header: true,

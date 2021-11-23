@@ -78,7 +78,7 @@ const ItemCardapio = (props) => {
             </div>
           </div>
           <div className="acao">
-            <Link className="item-cardapio-detalhes">
+            <Link className="item-cardapio-detalhes" to={`/area_administrativa/itemcardapio/${itemCardapio().id}`}>
               Detalhes
             </Link>
           </div>
